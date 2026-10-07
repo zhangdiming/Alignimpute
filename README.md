@@ -197,6 +197,8 @@ CPM-Nets is reimplemented in PyTorch in `cpmnets_baseline`.
 | `results/c014/` | host on imputed views on the real settings, rerun alone with its own neighbour graph |
 | `results/obs_sens/` | preprocessing statistics over all instances against observed rows only (paired runs, benchmarks) |
 | `results/*.jsonl` (top level) | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC, kNN imputation on the benchmarks |
+| `results/p1_mvp_leaky.jsonl`, `results/p4_cpspan_leaky_*.jsonl` | MVP and CPSPAN with their released loaders, which feed unobserved views to the encoders (Appendix D) |
+| `results/ifB/*_sanity.jsonl` | FreeCSL, DVIMC, GHICMC and RecFormer on complete HandWritten, seed 0 (Appendix C) |
 
 Each line of a `.jsonl` file is one run. Common fields:
 

@@ -211,7 +211,7 @@ def table_benchfam(B, key="nmi"):
         return S[("bench", f"{d}_{t}")][0].get(v, float("nan"))
     best = {c: max(val(v, *c) for _, rs in rows for _, v in rs if val(v, *c) == val(v, *c)) for c in cols}
     L = [r"\begin{table}[!htbp]",
-         rf"\caption{{Benchmarks under cohort missingness: chain and chain with a 5\% thin edge ({key.upper()} $\times100$; ten seeds for our framework, StabMap and imputation; five for the published deep IMVC methods). Every method withholds the features of unobserved views. Bold: best per column; --: no result.}}",
+         rf"\caption{{Benchmarks under cohort missingness: chain and chain with a 5\% thin edge ({key.upper()} $\times100$; ten seeds for our framework, StabMap, kNN imputation and the host on imputed views; five for the published methods, RecFormer included). Every method withholds the features of unobserved views. Bold: best per column; --: no result.}}",
          rf"\label{{tab:bench{key}}}", r"\centering\small", r"\begin{tabular}{ll cc cc cc}", r"\toprule",
          r" & & \multicolumn{2}{c}{HandWritten} & \multicolumn{2}{c}{Caltech101-7} & \multicolumn{2}{c}{Caltech101-20}\\",
          r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}", r"Family & Method & chain & thin & chain & thin & chain & thin\\", r"\midrule"]
