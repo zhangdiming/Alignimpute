@@ -194,6 +194,7 @@ CPM-Nets is reimplemented in PyTorch in `cpmnets_baseline`.
 | `results/diag/` | label-free descriptors |
 | `results/ifB/` | FreeCSL, DVIMC, GHICMC, RecFormer |
 | `results/aw/` | anchor-weight sensitivity |
+| `results/st0/tune_*`, `results/opt3/results/tune_*`, `results/mosaic/tune_*`, `results/ifE/tune_pancan_*` | label-free temperature rule: retrieval of withheld co-observed pairs (`holdout_r1`) for every candidate temperature, 13 settings; 0.1 is selected on all of them |
 | `results/c014/` | host on imputed views on the real settings, rerun alone with its own neighbour graph |
 | `results/obs_sens/` | preprocessing statistics over all instances against observed rows only (paired runs, benchmarks) |
 | `results/*.jsonl` (top level) | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC, kNN imputation on the benchmarks |
