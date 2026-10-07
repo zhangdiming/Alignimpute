@@ -1,0 +1,10 @@
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 0, "acc": 0.9425, "nmi": 0.8826021481097941, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 1, "acc": 0.9425, "nmi": 0.8799957629980046, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 2, "acc": 0.943, "nmi": 0.87934917660415, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 3, "acc": 0.9415, "nmi": 0.8795227759683656, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 4, "acc": 0.9415, "nmi": 0.8803157155171175, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 5, "acc": 0.9395, "nmi": 0.8763831949154741, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 6, "acc": 0.937, "nmi": 0.8704036060282082, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 7, "acc": 0.9355, "nmi": 0.8668806414148371, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 8, "acc": 0.9375, "nmi": 0.8724043415291594, "k": 10, "obs_stats": false}
+{"variant": "Kimp", "tag": "", "topology": "star", "seed": 9, "acc": 0.94, "nmi": 0.8766576187512025, "k": 10, "obs_stats": false}

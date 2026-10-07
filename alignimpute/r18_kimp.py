@@ -26,6 +26,8 @@ def main():
     with open(a.out, "a") as fo:
         for cfg in a.configs:
             topo, w = ("chain", None) if cfg == "chain" else ("chain", None)
+            if cfg in ("star", "ring", "two-comp", "complete"):
+                topo = cfg
             if cfg.startswith("chain-sweep-"):
                 p = float(cfg.split("-")[-1]); w = [1.0] * (V - 1); w[2] = p
             for seed in a.seeds:

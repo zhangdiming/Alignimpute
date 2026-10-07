@@ -29,3 +29,4 @@ done
 python -m alignimpute.coobs --data data --out results/coobs_real.json
 python -m alignimpute.hub_only --data data --out results/bench/hub_only.json
 python -m alignimpute.contact_map --labels raw/snm3c_inh_labels.csv --contacts raw3c --out results/st2/fig_3c.npz
+python -m alignimpute.hub_choice --data data --out results/star_hub/hub_choice.json

@@ -169,6 +169,13 @@ def stats(B):
     macro("hubLowMax", f"{max(x['hub_cov'] for x in lo):.2f}"); macro("hubHighMin", f"{min(x['hub_cov'] for x in hi):.2f}")
     macro("gapLowLo", f"{min(x['gap'] for x in lo):.1f}"); macro("gapLowHi", f"{max(x['gap'] for x in lo):.1f}")
     macro("gapHighLo", f"${min(x['gap'] for x in hi):+.1f}$"); macro("gapHighHi", f"${max(x['gap'] for x in hi):+.1f}$")
+    _, SH, H = star_rows(B)
+    drops = [r["gap_drop"] for r in SH]; ps = [r["p"] for r in SH]; gaps = {r["dataset"]: r["star"]["gap"] for r in SH}
+    macro("starDropLo", f"{min(drops):.1f}"); macro("starDropHi", f"{max(drops):.1f}"); macro("starPMax", f"{max(ps):.3f}")
+    macro("starGapHW", f"${gaps['HandWritten']:+.1f}$"); macro("starGapCalLo", f"{min(gaps['Caltech101-7'], gaps['Caltech101-20']):.1f}")
+    macro("starGapCalHi", f"{max(gaps['Caltech101-7'], gaps['Caltech101-20']):.1f}")
+    S0 = json.load(open(B / "star/summary.json")); g0 = {r["dataset"]: r["star"]["gap"] for r in S0}
+    macro("starWeakCalLo", f"{min(g0['Caltech101-7'], g0['Caltech101-20']):.1f}"); macro("starWeakCalHi", f"{max(g0['Caltech101-7'], g0['Caltech101-20']):.1f}")
     O = obs_sens(B)
     macro("obsMaxChange", f"{O['max_change']:.1f}"); macro("obsGapLo", f"${O['gap_lo']:+.1f}$"); macro("obsGapHi", f"${O['gap_hi']:+.1f}$")
     macro("obsSignKept", f"{O['sign_kept']}"); macro("obsCells", f"{O['cells']}")
@@ -314,6 +321,38 @@ def obs_sens(B):
             "sign_kept": sum((r["gap_obs"] > 0) == (r["gap_all"] > 0) for r in R)}
 
 
+STARM = {"S": "host, sync.", "ALw": "lin.-sync. host", "L1": "linear sync.", "Kimp": "kNN imp.", "Aimp": "host, imputed"}
+
+
+def star_rows(B):
+    S0 = json.load(open(B / "star/summary.json")); SH = json.load(open(B / "star_hub/summary.json")); H = json.load(open(B / "star_hub/hub_choice.json"))
+    keys = {"HandWritten": "handwritten", "Caltech101-7": "caltech101_7", "Caltech101-20": "caltech101_20"}
+    rows = []
+    for r0, rh in zip(S0, SH):
+        assert r0["dataset"] == rh["dataset"]
+        d = keys[r0["dataset"]]
+        rows.append((r0["dataset"], "chain", r0["chain"], None, None))
+        rows.append((r0["dataset"], "star, hub 1", r0["star"], r0["gap_drop"], r0["p"]))
+        rows.append((r0["dataset"], f"star, hub {H[d]['hub'] + 1}", rh["star"], rh["gap_drop"], rh["p"]))
+    return rows, SH, H
+
+
+def table_star(B):
+    rows, _, _ = star_rows(B)
+    L = [r"\begin{table}[!htbp]",
+         r"\caption{Controlled topology on the same benchmarks (NMI $\times100$, ten seeds, one GPU): every instance observes two views, arranged as a chain or as a star whose hub view is observed on every instance. The hub is view 1 of the files or the view that best predicts the other views (label-free, \ref{app:baselines}). Alignment and imputation: the best method of each family. Host, sync.: host with in-loop synchronisation; lin.-sync. host: host with a linear-sync first assignment; kNN imp.: kNN imputation; host, imputed: host on imputed views. Gap: best alignment minus best imputation; change: gap of the chain minus gap of the star, paired over seeds (Wilcoxon $p$).}",
+         r"\label{tab:star}", r"\centering\footnotesize\setlength{\tabcolsep}{2pt}", r"\begin{tabular}{l l l c l c r r}", r"\toprule",
+         r"Dataset & Topology & alignment & & imputation & & gap & change ($p$)\\", r"\midrule"]
+    last = None
+    for ds, top, t, drop, p in rows:
+        if last is not None and ds != last: L.append(r"\midrule")
+        ch = "" if drop is None else f"${drop:+.1f}$ ({p:.3f})"
+        L.append(f"{ds if ds != last else ''} & {top} & {STARM[t['best_align']]} & {t['mean'][t['best_align']]:.1f} & {STARM[t['best_impute']]} & {t['mean'][t['best_impute']]:.1f} & ${t['gap']:+.1f}$ & {ch}" + r"\\")
+        last = ds
+    L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    return L
+
+
 AW = (5, 10, 20, 40, 80)
 AWDS = [("tcga_legacy9", "TCGA 9 (natural graph)"), ("handwritten", "HandWritten (thin chain)"), ("caltech101_7", "Caltech101-7"), ("caltech101_20", "Caltech101-20"),
         ("proteinfold", "ProteinFold")]
@@ -346,7 +385,7 @@ def main():
     a = ap.parse_args()
     for fn, L in (("table_real_nmi.tex", table_real(a.build, "nmi")), ("table_real_acc.tex", table_real(a.build, "acc")),
                   ("table_gap.tex", table_gap(a.build)), ("table_benchfam.tex", table_benchfam(a.build)), ("table_benchfam_acc.tex", table_benchfam(a.build, "acc")),
-                  ("table_regret.tex", table_regret(a.build)[0]), ("table_grid1.tex", table_grid(a.build, ["complete", "random-2", "star", "ring"], "tab:grid", "1")), ("table_grid2.tex", table_grid(a.build, ["chain", "two-comp", "thin05"], "tab:grid2", "2")), ("table_shift.tex", table_shift(a.build)), ("stats.tex", stats(a.build)), ("table_aw.tex", table_aw(a.build))):
+                  ("table_regret.tex", table_regret(a.build)[0]), ("table_grid1.tex", table_grid(a.build, ["complete", "random-2", "star", "ring"], "tab:grid", "1")), ("table_grid2.tex", table_grid(a.build, ["chain", "two-comp", "thin05"], "tab:grid2", "2")), ("table_shift.tex", table_shift(a.build)), ("stats.tex", stats(a.build)), ("table_aw.tex", table_aw(a.build)), ("table_star.tex", table_star(a.build))):
         (a.sections / fn).write_text("\n".join(L) + "\n"); print("wrote", fn)
 
 
