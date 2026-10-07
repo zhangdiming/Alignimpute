@@ -2,7 +2,7 @@
 
 Code and per-seed results for the paper
 
-> **When to Align and When to Impute: Multi-View Clustering of Assembled Data with Views Never Observed Together**
+> **When to Align and When to Impute: Clustering Multi-View Data with Never Co-Observed Views**
 
 Multi-view data assembled from several studies record different views on different cohorts, so some pairs of views are never observed on the same instance. This repository contains the methods, baselines and analysis scripts used in the paper:
 
