@@ -2,7 +2,7 @@ from __future__ import annotations
 import argparse, json
 from pathlib import Path
 import numpy as np
-from .p0_handwritten import make_mask
+from .p0_handwritten import make_mask, obs_standardise
 from .metrics import kmeans_np, clustering_metrics
 from .bridge import bridge_impute
 
@@ -13,9 +13,11 @@ def main():
     ap.add_argument("--configs", nargs="+", default=["chain", "chain-sweep-0.05"])
     ap.add_argument("--class-alpha", type=float, default=0.0); ap.add_argument("--size-sigma", type=float, default=0.0)
     ap.add_argument("--batch-scale", type=float, default=0.0); ap.add_argument("--tag", default="")
+    ap.add_argument("--obs-stats", action="store_true", help="preprocessing statistics on the observed rows of each view only")
     ap.add_argument("--no-std", action="store_true", help="real assemblies: centre and scale each view globally, as p0_handwritten --no-std")
     a = ap.parse_args()
     d = np.load(a.data); y = d["y"]; views = [d[f"X{i}"] for i in range(len([k for k in d.files if k.startswith("X")]))]
+    raw_views = views
     if a.no_std:
         views = [(v - v.mean(0)) / (np.sqrt((v.std(0) ** 2).sum()) + 1e-8) * np.sqrt(v.shape[1]) for v in views]
     else:
@@ -31,6 +33,8 @@ def main():
                     mask, cohort = d["mask"].astype(bool), np.full(n, -1)
                 else:
                     mask, cohort = make_mask(topo, n, V, seed, cohort_weights=w, y=y, class_alpha=a.class_alpha, size_sigma=a.size_sigma)
+                if a.obs_stats:
+                    views = obs_standardise(raw_views, mask, a.no_std)
                 vr = views
                 if a.batch_scale > 0:
                     br = np.random.default_rng(seed + 15485863); vr = [v.copy() for v in views]
@@ -44,7 +48,7 @@ def main():
                 Xc = np.hstack([v / np.sqrt(v.shape[1]) for v in imp])
                 lab, _ = kmeans_np(Xc, K, seed=seed)
                 m = clustering_metrics(y, lab)
-                rec = {"variant": "Kimp", "tag": a.tag, "topology": cfg, "seed": seed, "acc": m["acc"], "nmi": m.get("nmi"), "k": a.k}
+                rec = {"variant": "Kimp", "tag": a.tag, "topology": cfg, "seed": seed, "acc": m["acc"], "nmi": m.get("nmi"), "k": a.k, "obs_stats": a.obs_stats}
                 fo.write(json.dumps(rec) + "\n"); fo.flush()
                 print(cfg, seed, round(m["acc"], 4), flush=True)
 

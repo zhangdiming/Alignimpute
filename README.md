@@ -124,6 +124,7 @@ The files under `results/st2/` used by Figure 1 are released with the results:
 | Hub-only clustering | `hub_only` |
 | Anchor-weight sensitivity | `aw_sens` |
 | Post-hoc synchronisation under cohort shift | `st4_posthoc_shift` |
+| Preprocessing statistics on observed rows only (sensitivity) | `--obs-stats` of `p0_handwritten` and `r18_kimp`; summary by `obs_sens_analyze` |
 
 Shared components:
 
@@ -133,7 +134,7 @@ Shared components:
 
 The host configuration used throughout is `--tau 0.1 --lam-proto 2 --lam-rec 0 --nbr-gamma 50`, with 300 full-batch epochs and `d = 32`. The temperature is selected by the label-free rule `--holdout-frac 0.1` (see `jobs/a100/ifE.sh` and `jobs/a100/mosaicE.sh`).
 
-Every method receives zero or no features for unobserved views.
+Every method receives zero or no features for unobserved views. The hosts, kNN imputation and the published methods compute their preprocessing statistics over all instances before the mask is applied; `--obs-stats` computes them on the observed rows of each view only (sensitivity analysis in `results/obs_sens/`).
 
 ## Re-running the experiments
 
@@ -191,6 +192,7 @@ CPM-Nets is reimplemented in PyTorch in `cpmnets_baseline`.
 | `results/diag/` | label-free descriptors |
 | `results/ifB/` | FreeCSL, DVIMC, GHICMC, RecFormer |
 | `results/aw/` | anchor-weight sensitivity |
+| `results/obs_sens/` | preprocessing statistics over all instances against observed rows only (paired runs, benchmarks) |
 | `results/*.jsonl` (top level) | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC, kNN imputation on the benchmarks |
 
 Each line of a `.jsonl` file is one run. Common fields:

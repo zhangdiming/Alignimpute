@@ -160,6 +160,9 @@ def stats(B):
     M = aw_means(B); rg = {d: max(m) - min(m) for d, m in M.items()}
     macro("awRangeTcga", f"{rg['tcga_legacy9']:.2f}"); macro("awRangeHW", f"{rg['handwritten']:.1f}")
     macro("awRangeOther", f"{max(v for d, v in rg.items() if d not in ('tcga_legacy9', 'handwritten')):.1f}")
+    O = obs_sens(B)
+    macro("obsMaxChange", f"{O['max_change']:.1f}"); macro("obsGapLo", f"${O['gap_lo']:+.1f}$"); macro("obsGapHi", f"${O['gap_hi']:+.1f}$")
+    macro("obsSignKept", f"{O['sign_kept']}"); macro("obsCells", f"{O['cells']}")
     macro("groupList", ", ".join(sorted({src(x) for x in R})).replace("_", r"\_"))
     sh = [x for x in R if x["kind"] == "shift"]
     macro("shiftAlignWins", sum(x["gap"] > 0 for x in sh)); macro("shiftN", len(sh)); macro("shiftGap", f"{np.mean([x['gap'] for x in sh]):+.1f}")
@@ -292,6 +295,14 @@ def table_grid(B, tops, label, part):
         L.append(dn + " & " + " & ".join(cells) + r"\\")
     L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
     return L
+
+
+def obs_sens(B):
+    R = json.load(open(B / "obs_sens/summary.json"))
+    ch = [abs(r[m][2]) for r in R for m in ("A", "S", "ALw", "Aimp", "Kimp")]
+    gd = [r["gap_obs"] - r["gap_all"] for r in R]
+    return {"max_change": max(ch), "gap_lo": min(gd), "gap_hi": max(gd), "cells": len(R),
+            "sign_kept": sum((r["gap_obs"] > 0) == (r["gap_all"] > 0) for r in R)}
 
 
 AW = (5, 10, 20, 40, 80)

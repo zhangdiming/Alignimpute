@@ -337,6 +337,14 @@ def proto_match_baseline(cons, mask, comps, y, K, seed):
     return clustering_metrics(y, pred)
 
 
+def obs_standardise(views, mask, no_std):
+    out = []
+    for j, v in enumerate(views):
+        o = v[mask[:, j]]; mu, sd = o.mean(0), o.std(0)
+        out.append((v - mu) / (np.sqrt((sd ** 2).sum()) + 1e-8) * np.sqrt(v.shape[1]) if no_std else (v - mu) / (sd + 1e-8))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", type=Path, required=True); ap.add_argument("--out", type=Path, required=True)
@@ -374,6 +382,7 @@ def main():
     ap.add_argument("--bridge-k", type=int, default=10, help="neighbours per hop of the chained kNN imputation (variant Aimp)")
     ap.add_argument("--proto-type", default="ours", choices=["ours", "dec", "deepcluster"], help="prototype term of the host")
     ap.add_argument("--proto-start", type=int, default=None, help="epoch of the first prototype assignment for A, C and Cthin (multiple of --sync-every; default: first synchronisation epoch)")
+    ap.add_argument("--obs-stats", action="store_true", help="compute the per-column preprocessing statistics on the observed rows of each view only, after the mask")
     ap.add_argument("--save-emb", type=Path, default=None, help="save final raw (unframed) embeddings, mask and labels per run to this directory")
     a = ap.parse_args()
     from .sync import THIN_CFG
@@ -384,6 +393,9 @@ def main():
         keep = d["mask"].astype(bool).all(1)
         views = [v[keep] for v in views]; y = y[keep]
         print(f"complete-only: kept {keep.sum()} of {len(keep)} instances", flush=True)
+    raw_views = views
+    if a.obs_stats and a.pca > 0:
+        raise SystemExit("--obs-stats is not combined with --pca")
     if a.no_std:
         views = [(v - v.mean(0)) / (np.sqrt((v.std(0) ** 2).sum()) + 1e-8) * np.sqrt(v.shape[1]) for v in views]
     else:
@@ -415,6 +427,8 @@ def main():
                     raise SystemExit("natural topology is incompatible with --complete-only")
             else:
                 mask, cohort = make_mask(topo, n, V, seed, cohort_weights=w, y=y, class_alpha=a.class_alpha, size_sigma=a.size_sigma)
+            if a.obs_stats:
+                views = obs_standardise(raw_views, mask, a.no_std)
             views_run = views
             if a.batch_scale > 0 and topo != "natural":
                 br = np.random.default_rng(seed + 15485863); views_run = [v.copy() for v in views]
@@ -506,7 +520,7 @@ def main():
                         return float((y[rv[S.argmax(1)]] == y[ru]).mean())
                     r1.update({f"xkobs_{k}": xk_obs(u, v) for k, (u, v) in pairs.items()})
                 rec = {"topology": (topo if p is None else f"chain-sweep-{p}") + (f"-w{a.cohort_weights}" if a.cohort_weights else ""), "seed": seed, "variant": variant, "tag": a.tag,
-                       "cfg": {"no_std": a.no_std, "proto_type": a.proto_type, "nbr_gamma": a.nbr_gamma, "proto_start": a.proto_start, "hid": a.hid, "d": a.d, "tau": a.tau, "lam_proto": a.lam_proto, "lam_rec": a.lam_rec, "sync_every": a.sync_every, "lr": a.lr, "wd": a.wd, "epochs": a.epochs, "pca": a.pca,
+                       "cfg": {"no_std": a.no_std, "obs_stats": a.obs_stats, "proto_type": a.proto_type, "nbr_gamma": a.nbr_gamma, "proto_start": a.proto_start, "hid": a.hid, "d": a.d, "tau": a.tau, "lam_proto": a.lam_proto, "lam_rec": a.lam_rec, "sync_every": a.sync_every, "lr": a.lr, "wd": a.wd, "epochs": a.epochs, "pca": a.pca,
                                **({"class_alpha": a.class_alpha, "size_sigma": a.size_sigma, "batch_scale": a.batch_scale} if (a.class_alpha or a.size_sigma or a.batch_scale) else {}),
                                **({"thin": {k: v for k, v in THIN_CFG.items()}} if (a.thin_anchor_weight or a.thin_reg or a.thin_nsub or a.thin_threads != 1) else {})},
                        "lambda2": lam2, "n_edge_23": int(N[2, 3]) if V > 3 else -1, "n_components": len(comps), **met, **r1,
