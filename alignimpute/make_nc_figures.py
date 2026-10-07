@@ -164,8 +164,61 @@ def fig_pitfalls(B, out):
     fig.tight_layout(w_pad=1.5); fig.savefig(out / "pitfalls.pdf", bbox_inches="tight"); plt.close(fig)
 
 
+def fig_bench(B, out):
+    from .results import old_baselines
+    S = FA.bench_settings(B); O = old_baselines(B, "nmi")
+    rows = [("No graph alignment", [("Unaligned consensus", "PCAcat"), ("Contrastive host", "A")]),
+            ("Imputation", [("kNN imputation + k-means", "Kimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
+            ("Deep IMVC", [("MVP", "MVP"), ("CPSPAN", "CPSPAN"), ("CPM-Nets", "CPM-Nets"), ("DIMVC", "DIMVC"), ("TreeEIC", "TreeEIC"),
+                           ("FreeCSL", "FreeCSL"), ("DVIMC", "DVIMC"), ("GHICMC", "GHICMC")]),
+            ("Alignment", [("StabMap", "StabMap"), ("Joint WP, in loop", "Cwp"), ("Host, in-loop sync.", "S"), ("Linear graph sync.", "L1"),
+                           ("Linear-sync first assignment", "ALw")])]
+    def val(v, d, t):
+        if v in O[d]:
+            x = O[d][v].get("chain" if t == "chain" else "chain-sweep-0.05", {})
+            return 100 * np.mean(list(x.values())) if x else float("nan")
+        return S[("bench", f"{d}_{t}")][0].get(v, float("nan"))
+    cols = [(d, t, f"{n}, {'chain' if t == 'chain' else 'thin edge'}") for d, n in (("handwritten", "HandWritten"), ("caltech101_7", "Caltech101-7"), ("caltech101_20", "Caltech101-20")) for t in ("chain", "thin05")]
+    methods = [(fam, name, v) for fam, rs in rows for name, v in rs]
+    fig, axs = plt.subplots(1, 6, figsize=(W, 3.6), sharey=True)
+    y = np.arange(len(methods))[::-1]
+    for ax, (d, t, title) in zip(axs, cols):
+        vals = [val(v, d, t) for _, _, v in methods]; best = max(x for x in vals if x == x)
+        ax.axvline(best, color=GRID, lw=3, zorder=0)
+        for yi, (fam, _, _), x in zip(y, methods, vals):
+            if x == x: ax.scatter(x, yi, s=16, marker=MK[fam], color=C[fam], edgecolor="#fcfcfb", lw=0.6, zorder=3)
+            else: ax.text(3, yi, "n/a", fontsize=6.5, color=INK2, ha="left", va="center")
+        ax.set_title(title.replace(", ", "\n"), fontsize=7.2, color=INK); ax.set_xlim(0, 90); ax.set_xticks([0, 40, 80])
+        ax.grid(axis="x", color=GRID, lw=0.5); ax.tick_params(labelsize=6.5, length=2)
+    axs[0].set_yticks(y); axs[0].set_yticklabels([m for _, m, _ in methods], fontsize=6.8)
+    fig.supxlabel("NMI (×100), mean over seeds; grey band: best method", fontsize=7, color=INK2)
+    handles = [plt.Line2D([], [], ls="", marker=MK[f], color=C[f], label=f) for f in C]
+    fig.legend(handles=handles, loc="upper center", ncol=4, frameon=False, fontsize=7, bbox_to_anchor=(0.6, 1.03), handletextpad=0.2, columnspacing=1.0)
+    fig.tight_layout(rect=(0, 0, 1, 0.95), w_pad=0.25); fig.savefig(out / "bench_results.pdf", bbox_inches="tight"); plt.close(fig)
+
+
+def fig_star(B, out):
+    S0 = json.load(open(B / "star/summary.json")); SH = json.load(open(B / "star_hub/summary.json")); H = json.load(open(B / "star_hub/hub_choice.json"))
+    keys = {"HandWritten": "handwritten", "Caltech101-7": "caltech101_7", "Caltech101-20": "caltech101_20"}
+    ds = [r["dataset"] for r in S0]
+    series = [("chain (no hub)", [r["chain"]["gap"] for r in S0], GREY, None),
+              ("star, hub = view 1", [r["star"]["gap"] for r in S0], ORANGE, None),
+              ("star, hub predicts the other views", [r["star"]["gap"] for r in SH], BLUE, None)]
+    fig, ax = plt.subplots(figsize=(W * 0.8, 2.4))
+    x = np.arange(len(ds)); w = 0.26
+    for k, (lab, v, col, _) in enumerate(series):
+        bars = ax.bar(x + (k - 1) * (w + 0.02), v, w, color=col, label=lab, zorder=2)
+        for b, val in zip(bars, v):
+            ax.text(b.get_x() + b.get_width() / 2, val + (0.6 if val >= 0 else -0.6), f"{val:+.1f}", ha="center", va="bottom" if val >= 0 else "top", fontsize=6.5, color=INK2)
+    ax.axhline(0, color=INK2, lw=0.8)
+    ax.set_xticks(x); ax.set_xticklabels([f"{d}\n(predictive hub = view {H[keys[d]]['hub'] + 1})" for d in ds], fontsize=6.8)
+    ax.set_ylabel("best alignment − best imputation\n(NMI points)"); ax.grid(axis="y", color=GRID, lw=0.5); ax.set_ylim(-4, 21)
+    ax.legend(frameon=False, fontsize=6.8, loc="upper left")
+    fig.tight_layout(); fig.savefig(out / "star_gap.pdf", bbox_inches="tight"); plt.close(fig)
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--build", type=Path, required=True); ap.add_argument("--out", type=Path, required=True)
     a = ap.parse_args(); a.out.mkdir(parents=True, exist_ok=True)
-    for f in (fig_graphs, fig_real, fig_gap, fig_shortfall, fig_pitfalls):
+    for f in (fig_graphs, fig_real, fig_gap, fig_shortfall, fig_pitfalls, fig_bench, fig_star):
         f(a.build, a.out); print("wrote", f.__name__)
