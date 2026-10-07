@@ -1,0 +1,62 @@
+python -m alignimpute.graph_diag --data data/cortex_stage2.npz --topology natural --no-std --tag real --out results/diag/real_cortex_stage2.jsonl
+python -m alignimpute.graph_diag --data data/cortex_stage2_no3c.npz --topology natural --no-std --tag real --out results/diag/real_cortex_stage2_no3c.jsonl
+python -m alignimpute.graph_diag --data data/tcga_legacy9.npz --topology natural --no-std --tag real --out results/diag/real_tcga_legacy9.jsonl
+python -m alignimpute.graph_diag --data data/pbmc_mimitou.npz --topology natural --no-std --tag real --out results/diag/real_pbmc_mimitou.jsonl
+python -m alignimpute.graph_diag --data data/bmmc_site1.npz --topology natural --no-std --tag real --out results/diag/real_bmmc_site1.jsonl
+python -m alignimpute.graph_diag --data data/tcga_pancan.npz --topology natural --no-std --tag real --out results/diag/real_tcga_pancan.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_handwritten_chain.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_handwritten_thin05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_caltech101_7_chain.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_caltech101_7_thin05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_caltech101_20_chain.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --tag bench --out results/diag/bench_caltech101_20_thin05.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_handwritten_chain_a1.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_handwritten_chain_a03.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_handwritten_chain_s05.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_handwritten_chain_s1.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_handwritten_chain_b03.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_handwritten_thin05_a1.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_handwritten_thin05_a03.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_handwritten_thin05_s05.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_handwritten_thin05_s1.jsonl
+python -m alignimpute.graph_diag --data data/handwritten.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_handwritten_thin05_b03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_caltech101_7_chain_a1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_caltech101_7_chain_a03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_caltech101_7_chain_s05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_caltech101_7_chain_s1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_caltech101_7_chain_b03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_caltech101_7_thin05_a1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_caltech101_7_thin05_a03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_caltech101_7_thin05_s05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_caltech101_7_thin05_s1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_7.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_caltech101_7_thin05_b03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_caltech101_20_chain_a1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_caltech101_20_chain_a03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_caltech101_20_chain_s05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_caltech101_20_chain_s1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_caltech101_20_chain_b03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_caltech101_20_thin05_a1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_caltech101_20_thin05_a03.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_caltech101_20_thin05_s05.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_caltech101_20_thin05_s1.jsonl
+python -m alignimpute.graph_diag --data data/caltech101_20.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_caltech101_20_thin05_b03.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_outdoorscene_chain_a1.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_outdoorscene_chain_a03.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_outdoorscene_chain_s05.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_outdoorscene_chain_s1.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_outdoorscene_chain_b03.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_outdoorscene_thin05_a1.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_outdoorscene_thin05_a03.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_outdoorscene_thin05_s05.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_outdoorscene_thin05_s1.jsonl
+python -m alignimpute.graph_diag --data data/outdoorscene.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_outdoorscene_thin05_b03.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_aloi_chain_a1.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_aloi_chain_a03.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_aloi_chain_s05.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_aloi_chain_s1.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology chain --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_aloi_chain_b03.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 1.0 --tag shift_a1 --out results/diag/shift_aloi_thin05_a1.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --class-alpha 0.3 --tag shift_a03 --out results/diag/shift_aloi_thin05_a03.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 0.5 --tag shift_s05 --out results/diag/shift_aloi_thin05_s05.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --size-sigma 1.0 --tag shift_s1 --out results/diag/shift_aloi_thin05_s1.jsonl
+python -m alignimpute.graph_diag --data data/aloi.npz --topology thin05 --seeds 0 1 2 3 4 5 6 7 8 9 --batch-scale 0.3 --tag shift_b03 --out results/diag/shift_aloi_thin05_b03.jsonl

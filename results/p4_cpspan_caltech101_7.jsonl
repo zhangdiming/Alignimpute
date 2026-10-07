@@ -1,0 +1,16 @@
+{"topology": "complete", "seed": 0, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.5034, "nmi": 0.6063, "ari": 0.413, "seconds": 304.3}
+{"topology": "complete", "seed": 1, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.5475, "nmi": 0.6144, "ari": 0.4294, "seconds": 248.2}
+{"topology": "complete", "seed": 2, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.4573, "nmi": 0.5478, "ari": 0.3729, "seconds": 139.4}
+{"topology": "chain", "seed": 0, "variant": "CPSPAN", "lambda2": 0.05356544746683698, "status": "ok", "acc": 0.3365, "nmi": 0.2927, "ari": 0.2015, "seconds": 91.6}
+{"topology": "chain", "seed": 1, "variant": "CPSPAN", "lambda2": 0.05356544746683698, "status": "ok", "acc": 0.3019, "nmi": 0.2225, "ari": 0.1515, "seconds": 90.2}
+{"topology": "chain", "seed": 2, "variant": "CPSPAN", "lambda2": 0.05356544746683698, "status": "ok", "acc": 0.2103, "nmi": 0.1445, "ari": 0.0603, "seconds": 93.0}
+{"topology": "two-comp", "seed": 0, "variant": "CPSPAN", "lambda2": -3.867281891749487e-17, "status": "ok", "acc": 0.3256, "nmi": 0.2371, "ari": 0.1692, "seconds": 90.8}
+{"topology": "two-comp", "seed": 1, "variant": "CPSPAN", "lambda2": -3.867281891749487e-17, "status": "ok", "acc": 0.2687, "nmi": 0.2544, "ari": 0.1326, "seconds": 91.1}
+{"topology": "two-comp", "seed": 2, "variant": "CPSPAN", "lambda2": -3.867281891749487e-17, "status": "ok", "acc": 0.2564, "nmi": 0.235, "ari": 0.1342, "seconds": 91.8}
+{"topology": "chain-sweep-0.05", "seed": 0, "variant": "CPSPAN", "lambda2": 0.007705042591658621, "status": "ok", "acc": 0.3399, "nmi": 0.2737, "ari": 0.2108, "seconds": 92.0}
+{"topology": "chain-sweep-0.05", "seed": 1, "variant": "CPSPAN", "lambda2": 0.007705042591658621, "status": "ok", "acc": 0.2815, "nmi": 0.2512, "ari": 0.1411, "seconds": 99.5}
+{"topology": "chain-sweep-0.05", "seed": 2, "variant": "CPSPAN", "lambda2": 0.007705042591658621, "status": "ok", "acc": 0.2531, "nmi": 0.2346, "ari": 0.131, "seconds": 89.4}
+{"topology": "complete", "seed": 3, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.5868, "nmi": 0.6073, "ari": 0.4949, "seconds": 133.4}
+{"topology": "complete", "seed": 4, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.5604, "nmi": 0.5645, "ari": 0.4323, "seconds": 135.8}
+{"topology": "chain", "seed": 3, "variant": "CPSPAN", "lambda2": 0.05356544746683698, "status": "ok", "acc": 0.2856, "nmi": 0.2832, "ari": 0.1679, "seconds": 96.8}
+{"topology": "chain", "seed": 4, "variant": "CPSPAN", "lambda2": 0.05356544746683698, "status": "ok", "acc": 0.3229, "nmi": 0.2284, "ari": 0.1373, "seconds": 92.2}

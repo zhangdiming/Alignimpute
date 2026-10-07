@@ -1,0 +1,1 @@
+{"data": "cortex_stage2", "topology": "natural", "seed": 0, "tag": "real", "diameter": 3.0, "connected": true, "hub_cov": 0.7638116425658139, "min_edge": 135, "lambda2": 0.10569153610664203, "nonedge_frac": 0.5333333333333333, "imputability": 0.1305572046723228}

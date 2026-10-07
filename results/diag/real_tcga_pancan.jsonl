@@ -1,0 +1,1 @@
+{"data": "tcga_pancan", "topology": "natural", "seed": 0, "tag": "real", "diameter": 1.0, "connected": true, "hub_cov": 0.9668179239931934, "min_edge": 6895, "lambda2": 2.6496971574103547, "nonedge_frac": 0.0, "imputability": 0.4395291533363759}

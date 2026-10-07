@@ -1,0 +1,1 @@
+{"data": "pbmc_mimitou", "topology": "natural", "seed": 0, "tag": "real", "diameter": 2.0, "connected": true, "hub_cov": 1.0, "min_edge": 8366, "lambda2": 0.4997310657719861, "nonedge_frac": 0.3333333333333333, "imputability": 0.6412006410097122}

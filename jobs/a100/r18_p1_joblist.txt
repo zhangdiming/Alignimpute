@@ -1,0 +1,9 @@
+python -m alignimpute.r18_kimp --data data/handwritten.npz --out results/r18_kimp_handwritten.jsonl --seeds 0 1 2 3 4 5 6 7 8 9
+python -m alignimpute.p0_handwritten --data data/handwritten.npz --tau 0.5 --lam-proto 2 --topologies chain --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_handwritten_chain.jsonl
+python -m alignimpute.p0_handwritten --data data/handwritten.npz --tau 0.5 --lam-proto 2 --topologies --sweep 0.05 --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_handwritten_thin.jsonl
+python -m alignimpute.r18_kimp --data data/caltech101_7.npz --out results/r18_kimp_caltech101_7.jsonl --seeds 0 1 2 3 4 5 6 7 8 9
+python -m alignimpute.p0_handwritten --data data/caltech101_7.npz --tau 0.1 --lam-proto 2 --topologies chain --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_caltech101_7_chain.jsonl
+python -m alignimpute.p0_handwritten --data data/caltech101_7.npz --tau 0.1 --lam-proto 2 --topologies --sweep 0.05 --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_caltech101_7_thin.jsonl
+python -m alignimpute.r18_kimp --data data/caltech101_20.npz --out results/r18_kimp_caltech101_20.jsonl --seeds 0 1 2 3 4 5 6 7 8 9
+python -m alignimpute.p0_handwritten --data data/caltech101_20.npz --tau 0.5 --lam-proto 2 --topologies chain --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_caltech101_20_chain.jsonl
+python -m alignimpute.p0_handwritten --data data/caltech101_20.npz --tau 0.5 --lam-proto 2 --topologies --sweep 0.05 --seeds 0 1 2 3 4 5 6 7 8 9 --variants Aimp --tag r18aimp --out results/r18_aimp_caltech101_20_thin.jsonl

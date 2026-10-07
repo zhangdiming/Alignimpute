@@ -1,0 +1,1 @@
+{"data": "tcga_legacy9", "topology": "natural", "seed": 0, "tag": "real", "diameter": 2.0, "connected": true, "hub_cov": 0.9682228324833267, "min_edge": 20, "lambda2": 0.4587222292060328, "nonedge_frac": 0.05555555555555555, "imputability": 0.47043507865219863}

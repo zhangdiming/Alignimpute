@@ -1,0 +1,14 @@
+{"topology": "random-2", "seed": 0, "variant": "CPSPAN", "lambda2": 0.3744620716854648, "status": "ok", "acc": 0.2054, "nmi": 0.2819, "ari": 0.0822, "seconds": 410.5}
+{"topology": "random-2", "seed": 1, "variant": "CPSPAN", "lambda2": 0.3831723035969091, "status": "ok", "acc": 0.2192, "nmi": 0.3089, "ari": 0.1188, "seconds": 407.6}
+{"topology": "random-2", "seed": 2, "variant": "CPSPAN", "lambda2": 0.37820790780104624, "status": "ok", "acc": 0.1819, "nmi": 0.2552, "ari": 0.0753, "seconds": 408.2}
+{"topology": "random-2", "seed": 3, "variant": "CPSPAN", "lambda2": 0.383404190373697, "status": "ok", "acc": 0.202, "nmi": 0.271, "ari": 0.0958, "seconds": 401.0}
+{"topology": "random-2", "seed": 4, "variant": "CPSPAN", "lambda2": 0.3688033190651757, "status": "ok", "acc": 0.2146, "nmi": 0.2681, "ari": 0.1004, "seconds": 387.7}
+{"topology": "random-2", "seed": 0, "variant": "CPSPAN-obsimp", "lambda2": 0.3744620716854648, "status": "ok", "acc": 0.1911, "nmi": 0.2202, "ari": 0.0811, "seconds": 266.6}
+{"topology": "random-2", "seed": 1, "variant": "CPSPAN-obsimp", "lambda2": 0.3831723035969091, "status": "ok", "acc": 0.1974, "nmi": 0.1832, "ari": 0.0717, "seconds": 250.5}
+{"topology": "random-2", "seed": 2, "variant": "CPSPAN-obsimp", "lambda2": 0.37820790780104624, "status": "ok", "acc": 0.1769, "nmi": 0.2161, "ari": 0.0731, "seconds": 254.1}
+{"topology": "random-2", "seed": 3, "variant": "CPSPAN-obsimp", "lambda2": 0.383404190373697, "status": "ok", "acc": 0.179, "nmi": 0.211, "ari": 0.0794, "seconds": 255.1}
+{"topology": "random-2", "seed": 4, "variant": "CPSPAN-obsimp", "lambda2": 0.3688033190651757, "status": "ok", "acc": 0.1781, "nmi": 0.1808, "ari": 0.0636, "seconds": 262.2}
+{"topology": "two-comp", "seed": 3, "variant": "CPSPAN", "lambda2": 1.4972798206526915e-17, "status": "ok", "acc": 0.2246, "nmi": 0.4014, "ari": 0.1785, "seconds": 282.7}
+{"topology": "two-comp", "seed": 4, "variant": "CPSPAN", "lambda2": 1.4972798206526915e-17, "status": "ok", "acc": 0.2867, "nmi": 0.4271, "ari": 0.2332, "seconds": 277.7}
+{"topology": "chain-sweep-0.05", "seed": 3, "variant": "CPSPAN", "lambda2": 0.007920147651597435, "status": "ok", "acc": 0.2339, "nmi": 0.3802, "ari": 0.1587, "seconds": 280.0}
+{"topology": "chain-sweep-0.05", "seed": 4, "variant": "CPSPAN", "lambda2": 0.007920147651597435, "status": "ok", "acc": 0.2435, "nmi": 0.4195, "ari": 0.2051, "seconds": 282.9}

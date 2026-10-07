@@ -1,0 +1,12 @@
+{"topology": "complete", "seed": 0, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.8825, "nmi": 0.8045, "ari": 0.7663, "seconds": 181.3}
+{"topology": "complete", "seed": 1, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.9455, "nmi": 0.89, "ari": 0.8839, "seconds": 255.3}
+{"topology": "complete", "seed": 2, "variant": "CPSPAN", "lambda2": 5.999999999999999, "status": "ok", "acc": 0.9105, "nmi": 0.8474, "ari": 0.8197, "seconds": 335.0}
+{"topology": "chain", "seed": 0, "variant": "CPSPAN", "lambda2": 0.053589838486224534, "status": "ok", "acc": 0.307, "nmi": 0.2816, "ari": 0.091, "seconds": 205.6}
+{"topology": "chain", "seed": 1, "variant": "CPSPAN", "lambda2": 0.053589838486224534, "status": "ok", "acc": 0.3345, "nmi": 0.3202, "ari": 0.1328, "seconds": 204.4}
+{"topology": "chain", "seed": 2, "variant": "CPSPAN", "lambda2": 0.053589838486224534, "status": "ok", "acc": 0.359, "nmi": 0.3599, "ari": 0.1731, "seconds": 209.4}
+{"topology": "two-comp", "seed": 0, "variant": "CPSPAN", "lambda2": 9.812634086067934e-18, "status": "ok", "acc": 0.415, "nmi": 0.3914, "ari": 0.198, "seconds": 223.9}
+{"topology": "two-comp", "seed": 1, "variant": "CPSPAN", "lambda2": 9.812634086067934e-18, "status": "ok", "acc": 0.418, "nmi": 0.4187, "ari": 0.2151, "seconds": 232.8}
+{"topology": "two-comp", "seed": 2, "variant": "CPSPAN", "lambda2": 9.812634086067934e-18, "status": "ok", "acc": 0.4135, "nmi": 0.4518, "ari": 0.2578, "seconds": 231.3}
+{"topology": "chain-sweep-0.05", "seed": 0, "variant": "CPSPAN", "lambda2": 0.007578809418313144, "status": "ok", "acc": 0.402, "nmi": 0.3983, "ari": 0.2137, "seconds": 195.0}
+{"topology": "chain-sweep-0.05", "seed": 1, "variant": "CPSPAN", "lambda2": 0.007578809418313144, "status": "ok", "acc": 0.407, "nmi": 0.3969, "ari": 0.1937, "seconds": 199.9}
+{"topology": "chain-sweep-0.05", "seed": 2, "variant": "CPSPAN", "lambda2": 0.007578809418313144, "status": "ok", "acc": 0.4235, "nmi": 0.4313, "ari": 0.234, "seconds": 199.4}
