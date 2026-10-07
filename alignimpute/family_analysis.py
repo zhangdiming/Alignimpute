@@ -39,6 +39,8 @@ def real_settings(B, key="nmi", raw=False):
             r[v] = agg(seeds(R, v, key))
         r["S"] = agg(seeds(R, "C", key))
         r["L1"] = agg(bys([x for x in lin if x["method"] == "L1"])); r["PCAcat"] = agg(bys([x for x in lin if x["method"] == "PCAcat"]))
+        if g != "tcga_pancan":
+            r["Aimp"] = agg(seeds(loads(B / f"c014/real_{g}_aimp_s*.jsonl"), "Aimp", key))
         if g == "tcga_pancan":
             st = load(B / "bench/stabmap_tcga_pancan.jsonl")
             R2 = loads(B / "ifE/real_tcga_pancan_aimp_s*.jsonl"); r["Aimp"] = agg(seeds(R2, "Aimp", key))

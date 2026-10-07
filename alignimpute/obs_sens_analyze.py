@@ -14,8 +14,10 @@ def main():
             S = {}
             for cond in ("all", "obs"):
                 R = [json.loads(l) for f in sorted(glob.glob(str(B / f"host_{cond}_{d}_{top}_s*.jsonl"))) for l in open(f)]
-                for v in ("A", "C" if top == "chain" else "Cthin", "ALw", "Aimp"):
+                for v in ("A", "C" if top == "chain" else "Cthin", "ALw"):
                     S[(cond, "S" if v.startswith("C") else v)] = {r["seed"]: 100 * r["nmi"] for r in R if r["variant"] == v}
+                RA = [json.loads(l) for f in sorted(glob.glob(str(B / f"aimp_{cond}_{d}_{top}_s*.jsonl"))) for l in open(f)]
+                S[(cond, "Aimp")] = {r["seed"]: 100 * r["nmi"] for r in RA if r["variant"] == "Aimp"}
                 K = [json.loads(l) for l in open(B / f"kimp_{cond}_{d}.jsonl")]
                 S[(cond, "Kimp")] = {r["seed"]: 100 * r["nmi"] for r in K if r["topology"] == ("chain" if top == "chain" else "chain-sweep-0.05")}
             out = {"setting": f"{dn} {top}"}

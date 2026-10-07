@@ -459,7 +459,7 @@ def main():
                     h = np.where(H & mask[:, u] & mask[:, v])[0]
                     if len(h) >= 2:
                         held[(u, v)] = h
-            imp_cache = None; pairs_cache = None; nbr_cache = None; lin_cache = None
+            imp_cache = None; pairs_cache = None; nbr_cache = {}; lin_cache = None
             for variant in a.variants:
                 t0 = time.time()
                 vrun, tmask, emask, vtrain = views_run, train_mask, mask, variant
@@ -470,8 +470,9 @@ def main():
                 train.pseudo = None; train.nbr = None; train.nbr_gamma = a.nbr_gamma
                 if a.nbr_gamma > 0:
                     from .bridge import view_neighbours
-                    if nbr_cache is None: nbr_cache = view_neighbours(vrun, tmask, k=a.nbr_k)
-                    train.nbr = nbr_cache
+                    key = "imputed" if variant == "Aimp" else "observed"
+                    if key not in nbr_cache: nbr_cache[key] = view_neighbours(vrun, tmask, k=a.nbr_k)
+                    train.nbr = nbr_cache[key]
                 if variant in ("Bp", "Cb", "Cbs"):
                     from .bridge import bridge_pairs
                     if pairs_cache is None: pairs_cache = bridge_pairs(views_run, train_mask, pca=a.bridge_pca)

@@ -145,6 +145,8 @@ Every method receives zero or no features for unobserved views. The hosts, kNN i
 
 The result records of the trained hosts also carry their full configuration in the field `cfg`.
 
+The host on imputed views builds its neighbour graph on the imputed views of all instances. Runs that trained it after other variants in the same process had reused the neighbour graph of those variants (observed rows of the original views); its results on Cortex 6, Cortex 5, TCGA 9, PBMC and BMMC, and in the sensitivity analysis, were therefore rerun alone with the fixed code (`results/c014/`, `results/obs_sens/aimp_*`, `jobs/a40/c014.sh`). The tables and figures use these reruns.
+
 Seeds:
 
 - ten seeds for linear graph synchronisation, kNN imputation, StabMap and the hosts;
@@ -192,6 +194,7 @@ CPM-Nets is reimplemented in PyTorch in `cpmnets_baseline`.
 | `results/diag/` | label-free descriptors |
 | `results/ifB/` | FreeCSL, DVIMC, GHICMC, RecFormer |
 | `results/aw/` | anchor-weight sensitivity |
+| `results/c014/` | host on imputed views on the real settings, rerun alone with its own neighbour graph |
 | `results/obs_sens/` | preprocessing statistics over all instances against observed rows only (paired runs, benchmarks) |
 | `results/*.jsonl` (top level) | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC, kNN imputation on the benchmarks |
 

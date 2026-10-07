@@ -36,10 +36,10 @@ def fig_graphs(B, out):
         hub = int(np.argmax(cov))
         for v in range(V):
             ax.scatter(*xy[v], s=14 + 70 * cov[v], color=RED if v == hub else "#ffffff", edgecolor=INK, lw=0.8, zorder=3)
-            ax.text(*(xy[v] * 1.5), d["views"][v], ha="center", va="center", fontsize=5.0, color=INK2)
+            ax.text(*(xy[v] * 1.7), d["views"][v], ha="center", va="center", fontsize=6.5, color=INK2)
         A = (N > 0) & ~np.eye(V, dtype=bool); Dm = np.where(A, 1, np.inf); np.fill_diagonal(Dm, 0)
         for k in range(V): Dm = np.minimum(Dm, Dm[:, [k]] + Dm[[k], :])
-        ax.set_title(f"{name}\nhub {cov.max():.2f}, diameter {int(Dm[np.isfinite(Dm)].max())}", fontsize=7, color=INK)
+        ax.set_title(f"{name}\nhub {cov.max():.2f}, diameter {int(Dm[np.isfinite(Dm)].max())}", fontsize=8, color=INK, pad=7)
         ax.set_xlim(-2.0, 2.0); ax.set_ylim(-1.8, 1.8); ax.set_aspect("equal"); ax.axis("off")
     fig.tight_layout(w_pad=0.3); fig.savefig(out / "real_graphs.pdf", bbox_inches="tight"); plt.close(fig)
 

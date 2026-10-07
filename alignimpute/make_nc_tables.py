@@ -163,6 +163,12 @@ def stats(B):
     M = aw_means(B); rg = {d: max(m) - min(m) for d, m in M.items()}
     macro("awRangeTcga", f"{rg['tcga_legacy9']:.2f}"); macro("awRangeHW", f"{rg['handwritten']:.1f}")
     macro("awRangeOther", f"{max(v for d, v in rg.items() if d not in ('tcga_legacy9', 'handwritten')):.1f}")
+    X = [x for x in R if x["kind"] in ("real", "bench") and x["gap"] == x["gap"]]
+    lo = [x for x in X if x["hub_cov"] < 0.9]; hi = [x for x in X if x["hub_cov"] >= 0.9]
+    macro("nLowHub", len(lo)); macro("nHighHub", len(hi))
+    macro("hubLowMax", f"{max(x['hub_cov'] for x in lo):.2f}"); macro("hubHighMin", f"{min(x['hub_cov'] for x in hi):.2f}")
+    macro("gapLowLo", f"{min(x['gap'] for x in lo):.1f}"); macro("gapLowHi", f"{max(x['gap'] for x in lo):.1f}")
+    macro("gapHighLo", f"${min(x['gap'] for x in hi):+.1f}$"); macro("gapHighHi", f"${max(x['gap'] for x in hi):+.1f}$")
     O = obs_sens(B)
     macro("obsMaxChange", f"{O['max_change']:.1f}"); macro("obsGapLo", f"${O['gap_lo']:+.1f}$"); macro("obsGapHi", f"${O['gap_hi']:+.1f}$")
     macro("obsSignKept", f"{O['sign_kept']}"); macro("obsCells", f"{O['cells']}")
