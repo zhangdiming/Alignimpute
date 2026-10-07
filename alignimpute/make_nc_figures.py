@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from . import family_analysis as FA
-from .make_nc_tables import REAL, ROWS, rows_all
+from .make_nc_tables import REAL, REAL_CANON, ROWS, rows_all
 
 from .style import BLUE, ORANGE, GREEN, GREY, INK, RED
 C = {"Alignment": BLUE, "Imputation": ORANGE, "Deep IMVC": GREEN, "No graph alignment": GREY}
@@ -52,6 +52,11 @@ def fig_real(B, out):
         if len(v) < 2: return None
         bs = v[rng.integers(0, len(v), (2000, len(v)))].mean(1); return np.percentile(bs, [2.5, 97.5])
     methods = [(fam, name, v) for fam, rs in ROWS for name, v in rs]
+    CI = {}
+    for g, _ in REAL_CANON:
+        for fam, mname, v in methods:
+            if V[g].get(v, float("nan")) == V[g].get(v, float("nan")):
+                CI[(g, v)] = ci(RAW[("real", g)][0].get(v, {}))
     fig, axs = plt.subplots(1, 6, figsize=(W, 3.5), sharey=True)
     y = np.arange(len(methods))[::-1]
     for ax, (g, name) in zip(axs, REAL):
@@ -60,7 +65,7 @@ def fig_real(B, out):
         for yi, (fam, mname, v) in zip(y, methods):
             x = V[g].get(v, float("nan"))
             if x == x:
-                c = ci(RAW[("real", g)][0].get(v, {}))
+                c = CI[(g, v)]
                 if c is not None: ax.plot(c, [yi, yi], color=C[fam], lw=1.0, zorder=2, solid_capstyle="butt")
                 ax.scatter(x, yi, s=16, marker=MK[fam], color=C[fam], edgecolor="#fcfcfb", lw=0.6, zorder=3)
             else:
@@ -128,7 +133,7 @@ def fig_pitfalls(B, out):
     from .results import load, loads, seeds
     fig, axs = plt.subplots(1, 2, figsize=(W, 2.5), gridspec_kw={"width_ratios": [1.4, 1]})
     taus = [0.1, 0.3, 0.5, 1.0, 2.0]; ax = axs[0]
-    graphs = [("cortex_stage2_no3c", "Cortex 5", "-"), ("tcga_legacy9", "TCGA 9", "--"), ("pbmc_mimitou", "PBMC", ":"), ("bmmc_site1", "BMMC", "-.")]
+    graphs = [("pbmc_mimitou", "PBMC", ":"), ("bmmc_site1", "BMMC", "-."), ("cortex_stage2_no3c", "Cortex 5", "-"), ("tcga_legacy9", "TCGA 9", "--")]
     for g, name, ls in graphs:
         hv = []
         for t in taus:
@@ -143,7 +148,7 @@ def fig_pitfalls(B, out):
     ax.set_xlabel("temperature τ (the label-free rule selects 0.1)"); ax.set_ylabel("contrastive host, NMI"); ax.grid(color=GRID, lw=0.5)
     ax.set_title("(a) host NMI against temperature", fontsize=8, color=INK, loc="left")
     ax = axs[1]; lin = load(B / "opt3/results/lin_real.jsonl")
-    gs = [("cortex_stage2", "Cortex 6"), ("cortex_stage2_no3c", "Cortex 5"), ("tcga_legacy9", "TCGA 9")]
+    gs = [("cortex_stage2_no3c", "Cortex 5"), ("cortex_stage2", "Cortex 6"), ("tcga_legacy9", "TCGA 9")]
     vals = {}
     for g, _ in gs:
         for std in (True, False):

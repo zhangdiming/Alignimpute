@@ -12,8 +12,10 @@ from scipy.stats import spearmanr
 from . import family_analysis as FA
 from .results import f1, old_baselines
 
-REAL = [("cortex_stage2", "Cortex 6"), ("cortex_stage2_no3c", "Cortex 5"), ("tcga_legacy9", "TCGA 9"), ("tcga_pancan", "PanCan"),
-        ("pbmc_mimitou", "PBMC"), ("bmmc_site1", "BMMC")]
+REAL_CANON = [("cortex_stage2", "Cortex 6"), ("cortex_stage2_no3c", "Cortex 5"), ("tcga_legacy9", "TCGA 9"), ("tcga_pancan", "PanCan"),
+              ("pbmc_mimitou", "PBMC"), ("bmmc_site1", "BMMC")]
+REAL = [("pbmc_mimitou", "PBMC"), ("bmmc_site1", "BMMC"), ("tcga_pancan", "PanCan"), ("cortex_stage2_no3c", "Cortex 5"),
+        ("cortex_stage2", "Cortex 6"), ("tcga_legacy9", "TCGA 9")]
 ROWS = [("No graph alignment", [("Unaligned consensus", "PCAcat"), ("Contrastive host", "A")]),
         ("Imputation", [("kNN imputation + $k$-means", "Kimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
         ("Deep IMVC", [("FreeCSL", "FreeCSL"), ("DVIMC", "DVIMC"), ("GHICMC", "GHICMC")]),
@@ -73,7 +75,8 @@ DSN = {"handwritten": "HandWritten", "caltech101_7": "Caltech101-7", "caltech101
 
 
 def table_gap(B):
-    R = [x for x in rows_all(B) if x["kind"] in ("real", "bench")]
+    order = {g: i for i, (g, _) in enumerate(REAL)}
+    R = sorted([x for x in rows_all(B) if x["kind"] == "real"], key=lambda x: order[x["name"]]) + [x for x in rows_all(B) if x["kind"] == "bench"]
     L = [r"\begin{table}[!htbp]",
          r"\caption{Best alignment method against best imputation method (NMI $\times100$) on the real graphs and the benchmark chains and 5\% thin edges, with label-free descriptors of each setting. Gap: alignment minus imputation.}",
          r"\label{tab:gap}", r"\centering\footnotesize\setlength{\tabcolsep}{3pt}", r"\begin{tabular}{l l c l c r c c c}", r"\toprule",
@@ -85,7 +88,7 @@ def table_gap(B):
         else:
             d, t = x["name"].rsplit("_", 1); nm = DSN[d] + (" chain" if t == "chain" else " thin")
         L.append(f"{nm} & {NAMES[x['ba'][1]]} & {x['ba'][0]:.1f} & {NAMES[x['bi'][1]]} & {x['bi'][0]:.1f} & {x['gap']:+.1f} & {x['hub_cov']:.2f} & {x['diameter']:.0f} & {x['imputability']:.2f}" + r"\\")
-        if x["kind"] == "real" and x["name"] == "bmmc_site1":
+        if x["kind"] == "real" and x["name"] == REAL[-1][0]:
             L.append(r"\midrule")
     L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
     return wrap(L)
@@ -106,7 +109,7 @@ def stats(B):
             m = np.ones(len(X), bool); m[i] = False; cand = np.unique(imp[m])
             t = cand[int(np.argmax([np.mean((imp[m] > tt) == win[m]) for tt in cand]))]; c += (imp[i] > t) == win[i]
         macro(f"loo{gname}", f"{c}/{len(X)}"); macro(f"maj{gname}", f"{max(win.mean(), 1 - win.mean()):.2f}")
-    RAW = FA.real_settings(B, "nmi", raw=True); gs = [g for g, _ in REAL]
+    RAW = FA.real_settings(B, "nmi", raw=True); gs = [g for g, _ in REAL_CANON]
     meths = [v for _, rs in ROWS for _, v in rs]
     nb = 2000
     def boot(paired):
