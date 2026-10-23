@@ -78,10 +78,15 @@ def score(a):
     Zl2 = Z / np.maximum(np.linalg.norm(Z, axis=1, keepdims=True), 1e-12)
     with a.out.open("a") as f:
         for post, ZZ in (("raw", Z), ("l2", Zl2)):
-            for s in range(10):
+            if post not in a.posts:
+                continue
+            for s in range(a.kmeans_seeds):
                 lab, _ = kmeans_np(ZZ, K, seed=s)
                 rec = {"data": str(a.data), "topology": a.topology, "mask_seed": a.seed, "method": f"StabMap[{a.tag}]", "kmeans_on": post, "seed": s, "dim": int(Z.shape[1]), "n_scored": int(emb.sum()), "n": int(n), "far_cell": far, **clustering_metrics(y, lab)}
                 f.write(json.dumps(rec) + "\n")
+                if getattr(a, "save_pred", None) is not None and post == "l2":
+                    a.save_pred.mkdir(parents=True, exist_ok=True); full = -np.ones(n, np.int16); full[emb] = lab
+                    np.save(a.save_pred / f"StabMap_{a.data.stem}_{a.topology}_s{s}.npy", full)
 
 
 def main():
@@ -91,7 +96,8 @@ def main():
     p.add_argument("--topology", default="natural"); p.add_argument("--seed", type=int, default=0)
     s = sp.add_parser("score"); s.add_argument("--data", type=Path, required=True); s.add_argument("--dir", type=Path, required=True)
     s.add_argument("--far", type=int, nargs=2, required=True); s.add_argument("--tag", required=True); s.add_argument("--out", type=Path, required=True)
-    s.add_argument("--topology", default="natural"); s.add_argument("--seed", type=int, default=0)
+    s.add_argument("--topology", default="natural"); s.add_argument("--seed", type=int, default=0); s.add_argument("--save-pred", type=Path, default=None)
+    s.add_argument("--kmeans-seeds", type=int, default=10); s.add_argument("--posts", nargs="+", default=["raw", "l2"])
     a = ap.parse_args()
     prep(a) if a.cmd == "prep" else score(a)
 

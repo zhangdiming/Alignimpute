@@ -8,7 +8,7 @@ Multi-view data assembled from several studies record different views on differe
 
 - training-free linear graph synchronisation;
 - a contrastive host and its variants;
-- kNN imputation through shared views;
+- kNN imputation through shared views and low-rank imputation (soft-impute with a label-free regularisation);
 - adapters that run published incomplete multi-view clustering methods without the features of unobserved views;
 - the result files from which every table and figure of the paper is generated.
 
@@ -46,11 +46,13 @@ python -m alignimpute.make_nc_figures --build results --out out/figures
 python -m alignimpute.fig_teaser --build results/st2 --out out/figures/teaser.pdf
 ```
 
-`make_nc_tables` writes the LaTeX tables and `stats.tex`. `stats.tex` defines the statistics quoted in the text:
+`make_nc_tables` writes the LaTeX tables, `stats.tex` and `stats_eswa.tex`. `stats.tex` defines the statistics quoted in the text:
 
 - the seed bootstrap of the largest shortfall;
 - source-grouped bootstrap intervals of the Spearman correlations;
 - anchor-weight sensitivities.
+
+`stats_eswa.tex` defines those of the revision: tuned and fixed-alignment gaps, the largest shortfall on the real settings by NMI and ACC, edge residuals, per-source cortex gaps, the controlled-topology statistics with low-rank imputation, and the cost of every method.
 
 These outputs are identical to the ones in the manuscript.
 
@@ -116,7 +118,8 @@ The files under `results/st2/` used by Figure 1 are released with the results:
 | Joint Wasserstein–Procrustes, in loop | `p0_handwritten`, variant `Cwp` |
 | Joint Wasserstein–Procrustes, post hoc | `alaux_baseline` (record variant `alaux_A2`) |
 | Host on imputed views | `p0_handwritten`, variant `Aimp` |
-| kNN imputation + k-means | `r18_kimp` (imputation in `bridge`) |
+| kNN imputation + k-means | `r18_kimp` (imputation in `bridge`; `--k` sets the number of neighbours) |
+| Low-rank imputation + k-means | `r18_kimp --method lowrank` (soft-impute in `lowrank`; `--all-fits` also scores every value of the regularisation path) |
 | StabMap | `stabmap_eval` (`prep` / `score`) with `stabmap_run.R` |
 | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC | `mvp_adapter`, `cpspan_adapter`, `cpmnets_baseline`, `dimvc_adapter`, `treeeic_adapter` |
 | FreeCSL, DVIMC, GHICMC, RecFormer | `baselines/*_adapter.py` |
@@ -126,6 +129,9 @@ The files under `results/st2/` used by Figure 1 are released with the results:
 | Post-hoc synchronisation under cohort shift | `st4_posthoc_shift` |
 | Controlled topology (chain against star) and label-free hub choice | `star_analyze`, `hub_choice` |
 | Preprocessing statistics on observed rows only (sensitivity) | `--obs-stats` of `p0_handwritten` and `r18_kimp`; summary by `obs_sens_analyze` |
+| Procrustes residual of every edge, with a permuted and a least-squares reference | `edge_resid` |
+| Cortex graphs scored on the Patch-seq and methylome subsets | `--save-pred` of `linsync`, `p0_handwritten`, `r18_kimp`, `stabmap_eval score` and `ALIGNIMPUTE_SAVE_PRED` for `baselines/`; summary by `c007_analyze` |
+| Wall-clock time, peak host and GPU memory | `time_run` |
 
 Shared components:
 
@@ -143,6 +149,7 @@ Every method receives zero or no features for unobserved views. The hosts, kNN i
 
 - `jobs/a100/` and `jobs/a40/`: lists and scripts, one file per experiment family. In each list, every line is one run with its full arguments; the launch scripts generate the lists and run them in parallel.
 - `jobs/extra_commands.sh`: the runs that were launched individually.
+- `jobs/revision/`: the runs added in revision: `revision.sh` (low-rank imputation on the real, benchmark, controlled-topology and shift settings; kNN imputation with 5, 20 and 50 neighbours; edge residuals; the cortex graphs with saved cluster labels) and `time.sh` (one run of every method on every real setting, one job at a time). The controlled-topology runs on the label-free hub read `data_hub/`, written by `jobs/a40/star_hub.sh`.
 
 The result records of the trained hosts also carry their full configuration in the field `cfg`.
 
@@ -201,6 +208,7 @@ CPM-Nets is reimplemented in PyTorch in `cpmnets_baseline`.
 | `results/obs_sens/` | preprocessing statistics over all instances against observed rows only (paired runs, benchmarks) |
 | `results/*.jsonl` (top level) | MVP, CPSPAN, CPM-Nets, DIMVC, TreeEIC, kNN imputation on the benchmarks |
 | `results/p1_mvp_leaky.jsonl`, `results/p4_cpspan_leaky_*.jsonl` | MVP and CPSPAN with their released loaders, which feed unobserved views to the encoders (Appendix D) |
+| `results/eswa/` | revision runs (`jobs/revision/`): `lrimp_*` low-rank imputation, `kimp_k*` kNN imputation with 5, 20 or 50 neighbours, `edge_resid.jsonl`, `c007_*` cortex reruns with their cluster labels in `results/eswa/preds/` and the per-subset summary `c007_summary.json`, `time.jsonl` the cost of every method. The published methods' cortex reruns are in `c007_{method}.jsonl` for the seeds of one sequential run and in `c007_{method}_{graph}_s{seed}.jsonl` for the seeds that were run separately |
 | `results/ifB/*_sanity.jsonl` | FreeCSL, DVIMC, GHICMC and RecFormer on complete HandWritten, seed 0 (Appendix C) |
 
 Each line of a `.jsonl` file is one run. Common fields:

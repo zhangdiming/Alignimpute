@@ -1,0 +1,38 @@
+setting                                           bestAlign       bestImpute    gap | imput hub  diam minE  nonedge
+real:cortex_stage2                              ALw   81.5     LRimp   76.0   +5.5 | 0.13  0.76  3    135  0.53
+real:cortex_stage2_no3c                         ALw   80.8     LRimp   76.0   +4.8 | 0.13  0.76  2    135  0.40
+real:tcga_legacy9                                L1   87.1  RecFormer   90.5   -3.4 | 0.47  0.97  2     20  0.06
+real:pbmc_mimitou                                L1   48.4      Kimp   50.0   -1.7 | 0.64  1.00  2   8366  0.33
+real:bmmc_site1                             StabMap   65.5      Kimp   65.3   +0.2 | 0.75  1.00  2  10000  0.33
+real:tcga_pancan                                ALw   81.8      Kimp   81.2   +0.6 | 0.44  0.97  1   6895  0.00
+bench:handwritten_chain                           S   77.8      Kimp   68.2   +9.6 | 0.37  0.40  5    400  0.67
+bench:handwritten_thin05                        Cwp   70.6     LRimp   54.3  +16.3 | 0.38  0.49  5     24  0.67
+bench:caltech101_7_chain                          S   48.0     LRimp   46.5   +1.5 | 0.42  0.40  5    294  0.67
+bench:caltech101_7_thin05                         S   45.4      Kimp   37.1   +8.3 | 0.43  0.49  5     18  0.67
+bench:caltech101_20_chain                         S   50.5     LRimp   46.3   +4.3 | 0.42  0.40  5    477  0.67
+bench:caltech101_20_thin05                        S   47.3     LRimp   41.4   +6.0 | 0.43  0.49  5     30  0.67
+shift: 50 cells; align wins 47; mean gap +4.2
+== real (n=6): Spearman of gap with descriptors
+   imputability  rho=-0.77 p=0.0724
+   hub_cov       rho=-0.79 p=0.059
+   diameter      rho=+0.34 p=0.512
+   min_edge      rho=-0.06 p=0.913
+   lambda2       rho=-0.43 p=0.397
+   nonedge_frac  rho=+0.64 p=0.173
+   LOO accuracy of 'impute if imputability > t': 4/6  (majority baseline 0.67)
+== real+bench (n=12): Spearman of gap with descriptors
+   imputability  rho=-0.67 p=0.0168
+   hub_cov       rho=-0.67 p=0.0179
+   diameter      rho=+0.72 p=0.00881
+   min_edge      rho=-0.46 p=0.134
+   lambda2       rho=-0.80 p=0.00161
+   nonedge_frac  rho=+0.77 p=0.00337
+   LOO accuracy of 'impute if imputability > t': 10/12  (majority baseline 0.83)
+== real+bench+shift (n=62): Spearman of gap with descriptors
+   imputability  rho=-0.27 p=0.0356
+   hub_cov       rho=-0.50 p=3.03e-05
+   diameter      rho=+0.56 p=2.02e-06
+   min_edge      rho=-0.35 p=0.00474
+   lambda2       rho=-0.38 p=0.00246
+   nonedge_frac  rho=+0.58 p=8.72e-07
+   LOO accuracy of 'impute if imputability > t': 56/62  (majority baseline 0.92)

@@ -1,0 +1,400 @@
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/cortex_stage2_no3c.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_cortex_stage2_no3c_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_legacy9.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_legacy9_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/tcga_pancan.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_tcga_pancan_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/pbmc_mimitou.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_pbmc_mimitou_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 0 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 1 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 2 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 3 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 4 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 5 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 6 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 7 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 8 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/bmmc_site1.npz --configs natural --no-std --seeds 9 --all-fits --save-pred preds/eswa --out results/eswa/lrimp_real_bmmc_site1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 0 --all-fits --out results/eswa/lrimp_bench_handwritten_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 0 --out results/eswa/lrimp_star_handwritten_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 0 --out results/eswa/lrimp_starhub_handwritten_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 1 --all-fits --out results/eswa/lrimp_bench_handwritten_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 1 --out results/eswa/lrimp_star_handwritten_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 1 --out results/eswa/lrimp_starhub_handwritten_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 2 --all-fits --out results/eswa/lrimp_bench_handwritten_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 2 --out results/eswa/lrimp_star_handwritten_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 2 --out results/eswa/lrimp_starhub_handwritten_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 3 --all-fits --out results/eswa/lrimp_bench_handwritten_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 3 --out results/eswa/lrimp_star_handwritten_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 3 --out results/eswa/lrimp_starhub_handwritten_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 4 --all-fits --out results/eswa/lrimp_bench_handwritten_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 4 --out results/eswa/lrimp_star_handwritten_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 4 --out results/eswa/lrimp_starhub_handwritten_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 5 --all-fits --out results/eswa/lrimp_bench_handwritten_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 5 --out results/eswa/lrimp_star_handwritten_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 5 --out results/eswa/lrimp_starhub_handwritten_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 6 --all-fits --out results/eswa/lrimp_bench_handwritten_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 6 --out results/eswa/lrimp_star_handwritten_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 6 --out results/eswa/lrimp_starhub_handwritten_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 7 --all-fits --out results/eswa/lrimp_bench_handwritten_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 7 --out results/eswa/lrimp_star_handwritten_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 7 --out results/eswa/lrimp_starhub_handwritten_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 8 --all-fits --out results/eswa/lrimp_bench_handwritten_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 8 --out results/eswa/lrimp_star_handwritten_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 8 --out results/eswa/lrimp_starhub_handwritten_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain chain-sweep-0.05 --seeds 9 --all-fits --out results/eswa/lrimp_bench_handwritten_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --configs chain star --seeds 9 --out results/eswa/lrimp_star_handwritten_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/handwritten_hub.npz --configs star --seeds 9 --out results/eswa/lrimp_starhub_handwritten_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 0 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 0 --out results/eswa/lrimp_star_caltech101_7_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 0 --out results/eswa/lrimp_starhub_caltech101_7_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 1 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 1 --out results/eswa/lrimp_star_caltech101_7_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 1 --out results/eswa/lrimp_starhub_caltech101_7_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 2 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 2 --out results/eswa/lrimp_star_caltech101_7_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 2 --out results/eswa/lrimp_starhub_caltech101_7_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 3 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 3 --out results/eswa/lrimp_star_caltech101_7_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 3 --out results/eswa/lrimp_starhub_caltech101_7_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 4 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 4 --out results/eswa/lrimp_star_caltech101_7_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 4 --out results/eswa/lrimp_starhub_caltech101_7_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 5 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 5 --out results/eswa/lrimp_star_caltech101_7_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 5 --out results/eswa/lrimp_starhub_caltech101_7_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 6 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 6 --out results/eswa/lrimp_star_caltech101_7_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 6 --out results/eswa/lrimp_starhub_caltech101_7_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 7 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 7 --out results/eswa/lrimp_star_caltech101_7_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 7 --out results/eswa/lrimp_starhub_caltech101_7_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 8 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 8 --out results/eswa/lrimp_star_caltech101_7_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 8 --out results/eswa/lrimp_starhub_caltech101_7_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain chain-sweep-0.05 --seeds 9 --all-fits --out results/eswa/lrimp_bench_caltech101_7_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --configs chain star --seeds 9 --out results/eswa/lrimp_star_caltech101_7_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_7_hub.npz --configs star --seeds 9 --out results/eswa/lrimp_starhub_caltech101_7_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 0 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 0 --out results/eswa/lrimp_star_caltech101_20_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 0 --out results/eswa/lrimp_starhub_caltech101_20_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 1 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 1 --out results/eswa/lrimp_star_caltech101_20_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 1 --out results/eswa/lrimp_starhub_caltech101_20_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 2 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 2 --out results/eswa/lrimp_star_caltech101_20_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 2 --out results/eswa/lrimp_starhub_caltech101_20_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 3 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 3 --out results/eswa/lrimp_star_caltech101_20_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 3 --out results/eswa/lrimp_starhub_caltech101_20_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 4 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 4 --out results/eswa/lrimp_star_caltech101_20_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 4 --out results/eswa/lrimp_starhub_caltech101_20_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 5 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 5 --out results/eswa/lrimp_star_caltech101_20_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 5 --out results/eswa/lrimp_starhub_caltech101_20_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 6 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 6 --out results/eswa/lrimp_star_caltech101_20_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 6 --out results/eswa/lrimp_starhub_caltech101_20_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 7 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 7 --out results/eswa/lrimp_star_caltech101_20_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 7 --out results/eswa/lrimp_starhub_caltech101_20_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 8 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 8 --out results/eswa/lrimp_star_caltech101_20_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 8 --out results/eswa/lrimp_starhub_caltech101_20_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain chain-sweep-0.05 --seeds 9 --all-fits --out results/eswa/lrimp_bench_caltech101_20_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --configs chain star --seeds 9 --out results/eswa/lrimp_star_caltech101_20_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data_hub/caltech101_20_hub.npz --configs star --seeds 9 --out results/eswa/lrimp_starhub_caltech101_20_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 0 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 0 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 0 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 0 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 0 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 1 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 1 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 1 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 1 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 1 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 2 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 2 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 2 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 2 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 2 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 3 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 3 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 3 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 3 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 3 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 4 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 4 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 4 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 4 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 4 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 5 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 5 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 5 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 5 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 5 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 6 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 6 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 6 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 6 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 6 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 7 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 7 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 7 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 7 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 7 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 8 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 8 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 8 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 8 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 8 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 9 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_handwritten_a1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 9 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_handwritten_a03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 9 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_handwritten_s05_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 9 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_handwritten_s1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/handwritten.npz --seeds 9 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_handwritten_b03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 0 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 0 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 0 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 0 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 0 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 1 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 1 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 1 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 1 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 1 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 2 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 2 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 2 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 2 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 2 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 3 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 3 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 3 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 3 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 3 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 4 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 4 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 4 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 4 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 4 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 5 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 5 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 5 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 5 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 5 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 6 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 6 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 6 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 6 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 6 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 7 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 7 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 7 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 7 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 7 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 8 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 8 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 8 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 8 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 8 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 9 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_7_a1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 9 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_7_a03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 9 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_7_s05_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 9 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_7_s1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_7.npz --seeds 9 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_7_b03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 0 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 0 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 0 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 0 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 0 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 1 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 1 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 1 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 1 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 1 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 2 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 2 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 2 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 2 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 2 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 3 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 3 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 3 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 3 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 3 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 4 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 4 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 4 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 4 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 4 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 5 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 5 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 5 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 5 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 5 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 6 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 6 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 6 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 6 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 6 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 7 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 7 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 7 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 7 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 7 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 8 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 8 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 8 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 8 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 8 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 9 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_caltech101_20_a1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 9 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_caltech101_20_a03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 9 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_caltech101_20_s05_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 9 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_caltech101_20_s1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/caltech101_20.npz --seeds 9 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_caltech101_20_b03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 0 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 0 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 0 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 0 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 0 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 1 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 1 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 1 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 1 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 1 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 2 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 2 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 2 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 2 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 2 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 3 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 3 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 3 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 3 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 3 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 4 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 4 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 4 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 4 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 4 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 5 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 5 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 5 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 5 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 5 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 6 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 6 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 6 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 6 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 6 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 7 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 7 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 7 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 7 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 7 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 8 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 8 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 8 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 8 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 8 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 9 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_outdoorscene_a1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 9 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_outdoorscene_a03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 9 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_outdoorscene_s05_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 9 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_outdoorscene_s1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/outdoorscene.npz --seeds 9 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_outdoorscene_b03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 0 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 0 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 0 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 0 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 0 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s0.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 1 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 1 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 1 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 1 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 1 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s1.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 2 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 2 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 2 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 2 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 2 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s2.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 3 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 3 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 3 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 3 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 3 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s3.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 4 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 4 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 4 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 4 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 4 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s4.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 5 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 5 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 5 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 5 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 5 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s5.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 6 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 6 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 6 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 6 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 6 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s6.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 7 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 7 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 7 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 7 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 7 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s7.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 8 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 8 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 8 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 8 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 8 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s8.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 9 --class-alpha=1.0 --tag eswa_shift_a1 --out results/eswa/lrimp_shift_aloi_a1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 9 --class-alpha=0.3 --tag eswa_shift_a03 --out results/eswa/lrimp_shift_aloi_a03_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 9 --size-sigma=0.5 --tag eswa_shift_s05 --out results/eswa/lrimp_shift_aloi_s05_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 9 --size-sigma=1.0 --tag eswa_shift_s1 --out results/eswa/lrimp_shift_aloi_s1_s9.jsonl
+OMP_NUM_THREADS=4 python -m alignimpute.r18_kimp --method lowrank --data data/aloi.npz --seeds 9 --batch-scale=0.3 --tag eswa_shift_b03 --out results/eswa/lrimp_shift_aloi_b03_s9.jsonl

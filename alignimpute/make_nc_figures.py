@@ -91,13 +91,13 @@ def fig_gap(B, out):
             P = [x for x in R if x["kind"] == kind]; col, mk, lab = style[kind]
             ax.scatter([x[key] for x in P], [x["ugap"] for x in P], s=28 if kind == "real" else 16, marker=mk, color=col, edgecolor="#fcfcfb", lw=0.6, label=lab, zorder=3 if kind == "real" else 2)
         ax.set_xlabel(xlab); ax.grid(color=GRID, lw=0.5); ax.set_title(title, fontsize=8, color=INK, loc="left")
-    off = {"cortex_stage2": (-4, -10), "cortex_stage2_no3c": (-4, 5), "tcga_legacy9": (-28, 16), "tcga_pancan": (-48, 6), "bmmc_site1": (-22, -16)}
+    off = {"cortex_stage2": (-4, 5), "cortex_stage2_no3c": (-4, -10), "tcga_legacy9": (-6, 24), "tcga_pancan": (-48, 1), "bmmc_site1": (-22, -16)}
     lab = dict(names, bmmc_site1="PBMC, BMMC")
     for x in R:
         if x["kind"] == "real" and x["name"] in off:
             axs[0].annotate(lab[x["name"]], (x["hub_cov"], x["ugap"]), xytext=off[x["name"]], textcoords="offset points", fontsize=6.5, color=INK, ha="right",
                             arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5, shrinkA=0, shrinkB=2))
-    axs[0].set_ylabel("best of three alignment methods\n− kNN imputation (NMI points)")
+    axs[0].set_ylabel("best of three alignment methods −\nbest of two imputation methods\n(NMI points)")
     axs[1].legend(frameon=False, fontsize=7, loc="upper left")
     fig.tight_layout(w_pad=1.0); fig.savefig(out / "gap_hub.pdf", bbox_inches="tight"); plt.close(fig)
 
@@ -168,7 +168,7 @@ def fig_bench(B, out):
     from .results import old_baselines
     S = FA.bench_settings(B); O = old_baselines(B, "nmi")
     rows = [("No graph alignment", [("Unaligned consensus", "PCAcat"), ("Contrastive host", "A")]),
-            ("Imputation", [("kNN imputation + k-means", "Kimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
+            ("Imputation", [("kNN imputation + k-means", "Kimp"), ("Low-rank imputation + k-means", "LRimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
             ("Deep IMVC", [("MVP", "MVP"), ("CPSPAN", "CPSPAN"), ("CPM-Nets", "CPM-Nets"), ("DIMVC", "DIMVC"), ("TreeEIC", "TreeEIC"),
                            ("FreeCSL", "FreeCSL"), ("DVIMC", "DVIMC"), ("GHICMC", "GHICMC")]),
             ("Alignment", [("StabMap", "StabMap"), ("Joint WP, in loop", "Cwp"), ("Host, in-loop sync.", "S"), ("Linear graph sync.", "L1"),

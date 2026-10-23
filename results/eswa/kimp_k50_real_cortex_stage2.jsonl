@@ -1,0 +1,10 @@
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 0, "acc": 0.7152391546162402, "nmi": 0.6170988024037738, "ari": 0.585711756275171, "k": 50, "obs_stats": false, "seconds": 1.29}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 1, "acc": 0.7156099369670004, "nmi": 0.6173194460835875, "ari": 0.5865251881573518, "k": 50, "obs_stats": false, "seconds": 0.76}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 2, "acc": 0.71449758991472, "nmi": 0.6157122223137369, "ari": 0.5841639335623297, "k": 50, "obs_stats": false, "seconds": 0.72}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 3, "acc": 0.7159807193177605, "nmi": 0.6170853943606641, "ari": 0.5863663189971093, "k": 50, "obs_stats": false, "seconds": 0.68}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 4, "acc": 0.7156099369670004, "nmi": 0.6156356627451951, "ari": 0.5856405673830191, "k": 50, "obs_stats": false, "seconds": 1.02}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 5, "acc": 0.7159807193177605, "nmi": 0.6177293894972566, "ari": 0.5867964789164497, "k": 50, "obs_stats": false, "seconds": 0.92}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 6, "acc": 0.7170930663700408, "nmi": 0.6188570370060047, "ari": 0.5875341887205292, "k": 50, "obs_stats": false, "seconds": 0.79}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 7, "acc": 0.7159807193177605, "nmi": 0.6145632080363224, "ari": 0.5848897628798693, "k": 50, "obs_stats": false, "seconds": 0.78}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 8, "acc": 0.7156099369670004, "nmi": 0.6174129507047068, "ari": 0.586253410743416, "k": 50, "obs_stats": false, "seconds": 0.98}
+{"variant": "Kimp", "tag": "", "topology": "natural", "seed": 9, "acc": 0.7156099369670004, "nmi": 0.6174129507047067, "ari": 0.586253410743416, "k": 50, "obs_stats": false, "seconds": 0.75}

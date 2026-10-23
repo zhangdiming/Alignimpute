@@ -12,7 +12,7 @@ from scipy.stats import spearmanr
 from .results import ext_seeds, load, loads, seeds
 
 ALIGN = ["L1", "StabMap", "ALw", "S", "Cwp", "A2"]
-IMPUTE = ["Kimp", "Aimp", "RecFormer"]
+IMPUTE = ["Kimp", "Aimp", "RecFormer", "LRimp"]
 
 
 def mean(xs):
@@ -46,6 +46,7 @@ def real_settings(B, key="nmi", raw=False):
             R2 = loads(B / "ifE/real_tcga_pancan_aimp_s*.jsonl"); r["Aimp"] = agg(seeds(R2, "Aimp", key))
         r["StabMap"] = agg(bys([x for x in st if x["method"] == "StabMap[all_noscale]" and x["kmeans_on"] == "l2"]))
         r["Kimp"] = agg(bys(load(B / f"bench/kimp_real_{g}.jsonl")))
+        r["LRimp"] = agg(bys(loads(B / f"eswa/lrimp_real_{g}_s*.jsonl")))
         for e in ("RecFormer", "FreeCSL", "DVIMC", "GHICMC"):
             x = ext_seeds(B, e, g, "natural", key)
             if not x:
@@ -66,6 +67,7 @@ def bench_settings(B, key="nmi"):
             r["L1"] = mean([x[key] for x in lin if x["method"] == "L1"]); r["PCAcat"] = mean([x[key] for x in lin if x["method"] == "PCAcat"])
             r["StabMap"] = mean([x[key] for x in load(B / f"bench/stabmap_{d}_{t}.jsonl") if x["kmeans_on"] == "l2"])
             r["Kimp"] = mean([x[key] for x in load(B / f"r18_kimp_{d}.jsonl") if x["topology"] == tk])
+            r["LRimp"] = mean([x[key] for x in loads(B / f"eswa/lrimp_bench_{d}_s*.jsonl") if x["topology"] == tk])
             r["Aimp"] = mean(seeds(load(B / f"st1/abl_{d}_{ot}_aimp.jsonl"), "Aimp", key))
             W = loads(B / f"st1/abl_{d}_{ot}_wp_s*.jsonl"); r["Cwp"] = mean(seeds(W, "Cwp", key))
             for e in ("RecFormer", "FreeCSL", "DVIMC", "GHICMC"):
@@ -85,7 +87,8 @@ def shift_settings(B, key="nmi"):
                 K = [x for x in load(B / f"st2/shiftk_{d}_{lv}.jsonl") if x.get("topology") == topo]
                 N = loads(B / f"ifE/shift_{d}_{lv}_{top}_s*.jsonl")
                 r = {"A": mean(seeds(R, "A", key)), "ALw": mean(seeds(N, "ALw", key)), "S": mean(seeds(R, "C" if top == "chain" else "Cthin", key)),
-                     "Cwp": mean(seeds(W, "Cwp", key)), "A2": mean([x[key] for x in A2]), "Kimp": mean([x[key] for x in K])}
+                     "Cwp": mean(seeds(W, "Cwp", key)), "A2": mean([x[key] for x in A2]), "Kimp": mean([x[key] for x in K]),
+                     "LRimp": mean([x[key] for x in loads(B / f"eswa/lrimp_shift_{d}_{lv}_s*.jsonl") if x["topology"] == topo])}
                 lin = [x for x in load(B / f"linshift/{d}_{tt}_{lv}.jsonl") if x["method"] == "L1" and x["std"] and not x["whiten"]]
                 assert len(lin) == 10, (d, tt, lv, len(lin))
                 r["L1"] = mean([x[key] for x in lin])

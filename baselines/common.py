@@ -98,6 +98,9 @@ def run_cells(method, run_one, args, config_note):
                 pred = np.asarray(pred).astype(int)
                 met = clustering_metrics(y, pred)
                 rec.update(status="ok", **met, n_pred_clusters=int(len(np.unique(pred))))
+                if os.environ.get("ALIGNIMPUTE_SAVE_PRED"):
+                    sp = Path(os.environ["ALIGNIMPUTE_SAVE_PRED"]); sp.mkdir(parents=True, exist_ok=True)
+                    np.save(sp / f"{method}_{ds}_{topo}_s{seed}.npy", pred.astype(np.int16))
                 rec.update(extra or {})
             except Exception as e:
                 import traceback; traceback.print_exc()

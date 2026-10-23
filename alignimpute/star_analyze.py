@@ -4,7 +4,7 @@ import numpy as np
 from scipy.stats import wilcoxon
 
 DS = [("handwritten", "HandWritten"), ("caltech101_7", "Caltech101-7"), ("caltech101_20", "Caltech101-20")]
-ALIGN, IMPUTE = ("S", "ALw", "L1"), ("Kimp", "Aimp")
+ALIGN, IMPUTE = ("S", "ALw", "L1"), ("Kimp", "Aimp", "LRimp")
 
 
 def per_seed(B, d, top):
@@ -15,6 +15,9 @@ def per_seed(B, d, top):
         R[name] = {r["seed"]: 100 * r["nmi"] for r in host if r["variant"] == v}
     R["Aimp"] = {r["seed"]: 100 * r["nmi"] for r in aimp if r["variant"] == "Aimp"}
     R["Kimp"] = {r["seed"]: 100 * r["nmi"] for r in map(json.loads, open(B / f"kimp_{d}.jsonl")) if r["topology"] == top}
+    lr = {r["seed"]: 100 * r["nmi"] for f in sorted(glob.glob(str(B / f"lrimp_{d}_s*.jsonl"))) for r in map(json.loads, open(f)) if r["topology"] == top}
+    if lr:
+        R["LRimp"] = lr
     lin = [json.loads(l) for l in open(B / f"lin_{d}.jsonl")]
     for m in ("L1", "PCAcat"):
         R[m] = {r["seed"]: 100 * r["nmi"] for r in lin if r["topology"] == top and r["method"] == m}
@@ -32,16 +35,16 @@ def main():
         row = {"dataset": dn}
         for top in ("chain", "star"):
             R = per_seed(B if top == "chain" else BS, d, top); mean = {k: float(np.mean(list(v.values()))) for k, v in R.items()}
-            ba = max(ALIGN, key=lambda m: mean[m]); bi = max(IMPUTE, key=lambda m: mean[m])
+            ba = max(ALIGN, key=lambda m: mean[m]); bi = max((m for m in IMPUTE if m in mean), key=lambda m: mean[m])
             row[top] = {"mean": mean, "best_align": ba, "best_impute": bi, "gap": mean[ba] - mean[bi],
                         "gap_seeds": [R[ba][s] - R[bi][s] for s in range(10)]}
         dg = np.array(row["chain"]["gap_seeds"]) - np.array(row["star"]["gap_seeds"])
         row["gap_drop"] = float(dg.mean()); row["p"] = float(wilcoxon(dg).pvalue); out.append(row)
-    meths = ("A", "S", "ALw", "L1", "Aimp", "Kimp", "PCAcat")
+    meths = ("A", "S", "ALw", "L1", "Aimp", "Kimp", "LRimp", "PCAcat")
     print(f"{'dataset':15s} {'top':6s}" + "".join(f"{m:>8s}" for m in meths) + "   best align - best impute = gap")
     for r in out:
         for top in ("chain", "star"):
-            t = r[top]; print(f"{r['dataset']:15s} {top:6s}" + "".join(f"{t['mean'][m]:8.1f}" for m in meths) + f"   {t['best_align']:>4s} - {t['best_impute']:<4s} = {t['gap']:+6.1f}")
+            t = r[top]; print(f"{r['dataset']:15s} {top:6s}" + "".join(f"{t['mean'].get(m, float('nan')):8.1f}" for m in meths) + f"   {t['best_align']:>4s} - {t['best_impute']:<4s} = {t['gap']:+6.1f}")
         print(f"{'':15s} gap chain - star = {r['gap_drop']:+.1f} (Wilcoxon over seeds p = {r['p']:.3g})")
     json.dump(out, open(BS / a.out, "w"), indent=1, default=float)
 

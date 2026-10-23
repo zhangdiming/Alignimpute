@@ -384,6 +384,7 @@ def main():
     ap.add_argument("--proto-start", type=int, default=None, help="epoch of the first prototype assignment for A, C and Cthin (multiple of --sync-every; default: first synchronisation epoch)")
     ap.add_argument("--obs-stats", action="store_true", help="compute the per-column preprocessing statistics on the observed rows of each view only, after the mask")
     ap.add_argument("--save-emb", type=Path, default=None, help="save final raw (unframed) embeddings, mask and labels per run to this directory")
+    ap.add_argument("--save-pred", type=Path, default=None, help="directory for the cluster labels of every run")
     a = ap.parse_args()
     from .sync import THIN_CFG
     THIN_CFG.update({"anchor_weight": a.thin_anchor_weight, "reg": a.thin_reg, "n_sub": a.thin_nsub, "threads": a.thin_threads})
@@ -541,6 +542,9 @@ def main():
                     a.save_emb.mkdir(parents=True, exist_ok=True)
                     Zr = raw_embeddings(model, X)
                     np.savez_compressed(a.save_emb / f"{rec['topology']}_s{seed}_{variant}.npz", Z=np.stack(Zr), Zf=np.stack(Zf), framed=framed, mask=mask, y=y, acc=met["acc"])
+                if a.save_pred is not None:
+                    a.save_pred.mkdir(parents=True, exist_ok=True)
+                    np.save(a.save_pred / f"{variant}_{a.data.stem}_{rec['topology']}_s{seed}.npy", np.asarray(lab).astype(np.int16))
                 if getattr(train, "trace", False): rec["drift_trace"] = train.last_trace
                 if getattr(train, "last_churn", None): rec["churn"] = train.last_churn
                 if variant == "Cg": rec["gate_open"] = bool(getattr(train, "last_gate_open", False))

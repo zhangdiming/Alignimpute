@@ -104,6 +104,7 @@ def main():
     ap.add_argument("--no-std", action="store_true", help="centre and scale each view globally instead of standardising columns")
     ap.add_argument("--no-whiten", action="store_true", help="keep the PCA spectrum in the scores")
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--save-pred", type=Path, default=None, help="directory for the cluster labels of every run")
     a = ap.parse_args()
     PRE["std"] = not a.no_std; PRE["whiten"] = not a.no_whiten
     SHIFT.update(class_alpha=a.class_alpha, size_sigma=a.size_sigma, batch_scale=a.batch_scale)
@@ -126,6 +127,9 @@ def main():
                            **clustering_metrics(y, lab), **info}
                     with a.out.open("a") as f:
                         f.write(json.dumps(rec) + "\n")
+                    if a.save_pred is not None:
+                        a.save_pred.mkdir(parents=True, exist_ok=True)
+                        np.save(a.save_pred / f"{m}_{a.data.stem}_{topo}_s{seed}.npy", lab.astype(np.int16))
                     print(json.dumps({k: rec[k] for k in ("data", "topology", "seed", "method", "d", "nmi", "acc")}), flush=True)
 
 

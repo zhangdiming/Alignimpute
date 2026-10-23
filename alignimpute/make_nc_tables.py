@@ -17,7 +17,7 @@ REAL_CANON = [("cortex_stage2", "Cortex 6"), ("cortex_stage2_no3c", "Cortex 5"),
 REAL = [("pbmc_mimitou", "PBMC"), ("bmmc_site1", "BMMC"), ("tcga_pancan", "PanCan"), ("cortex_stage2_no3c", "Cortex 5"),
         ("cortex_stage2", "Cortex 6"), ("tcga_legacy9", "TCGA 9")]
 ROWS = [("No graph alignment", [("Unaligned consensus", "PCAcat"), ("Contrastive host", "A")]),
-        ("Imputation", [("kNN imputation + $k$-means", "Kimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
+        ("Imputation", [("kNN imputation + $k$-means", "Kimp"), ("Low-rank imputation + $k$-means", "LRimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
         ("Deep IMVC", [("FreeCSL", "FreeCSL"), ("DVIMC", "DVIMC"), ("GHICMC", "GHICMC")]),
         ("Alignment", [("StabMap", "StabMap"), ("Joint WP, in loop", "Cwp"), ("Host, in-loop sync.", "S"), ("Linear graph sync.", "L1"),
                        ("Linear-sync first assignment", "ALw")])]
@@ -33,7 +33,7 @@ def table_real(B, key):
     RAW = FA.real_settings(B, key, raw=True); SD = {g: {v: 100 * np.std(list(d.values()), ddof=1) if len(d) > 1 else float("nan") for v, d in RAW[("real", g)][0].items()} for g, _ in REAL}
     best = {g: max(v for v in V[g].values() if v == v) for g, _ in REAL}
     L = [r"\begin{table}[!htbp]",
-         rf"\caption{{Real co-observation graphs ({key.upper()} $\times100$; ten seeds for the methods of our framework (five for the trained hosts on PanCan), five for the published deep IMVC methods; StabMap, linear graph synchronisation and kNN imputation are deterministic up to the $k$-means seed). $\pm$: standard deviation over seeds. Bold: best mean per column; --: not run (joint WP is too slow beyond about 5\,000 instances); OOM: out of memory on an 80\,GB GPU. Bottom: label-free descriptors of each graph.}}",
+         rf"\caption{{Real co-observation graphs ({key.upper()} $\times100$; ten seeds for the methods of our framework (five for the trained hosts on PanCan) and for low-rank imputation, five for the published deep IMVC methods; StabMap, linear graph synchronisation and kNN imputation are deterministic up to the $k$-means seed). $\pm$: standard deviation over seeds. Bold: best mean per column; --: not run (joint WP is too slow beyond about 5\,000 instances); OOM: out of memory on an 80\,GB GPU. Bottom: label-free descriptors of each graph.}}",
          rf"\label{{tab:real{key}}}", r"\centering\footnotesize\setlength{\tabcolsep}{2pt}", r"\begin{tabular}{l" + "c" * len(REAL) + "}", r"\toprule",
          "Method & " + " & ".join(n for _, n in REAL) + r"\\", r"\midrule"]
     for fam, rows in ROWS:
@@ -53,10 +53,11 @@ def table_real(B, key):
     for name, k, fmt in (("hub coverage", "hub_cov", "{:.2f}"), ("diameter", "diameter", "{:.0f}"), ("imputability", "imputability", "{:.2f}")):
         L.append(r"\textit{" + name + "} & " + " & ".join(fmt.format(diag[g][k]) for g, _ in REAL) + r"\\")
     L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
-    return L
+    return wrap(L)
 
 
 UALIGN = ("L1", "ALw", "S")
+UIMPUTE = ("Kimp", "LRimp")
 
 
 def rows_all(B):
@@ -64,13 +65,13 @@ def rows_all(B):
     out = []
     for (kind, name), (r, dg) in S.items():
         ba, bi = FA.best(r, FA.ALIGN), FA.best(r, FA.IMPUTE)
-        ugap = max(r[k] for k in UALIGN) - r["Kimp"]
+        ugap = max(r[k] for k in UALIGN) - max(r[k] for k in UIMPUTE)
         out.append(dict(kind=kind, name=name, gap=ba[0] - bi[0], ugap=ugap, ba=ba, bi=bi, r=r, **dg))
     return out
 
 
 NAMES = {"L1": "linear sync.", "StabMap": "StabMap", "ALw": "lin.-sync. first assignment", "S": "host, in-loop sync.", "Cwp": "joint WP", "A2": "joint WP (post hoc)",
-         "Kimp": "kNN imputation", "Aimp": "host on imputed views", "RecFormer": "RecFormer"}
+         "Kimp": "kNN imputation", "LRimp": "low-rank imputation", "Aimp": "host on imputed views", "RecFormer": "RecFormer"}
 DSN = {"handwritten": "HandWritten", "caltech101_7": "Caltech101-7", "caltech101_20": "Caltech101-20"}
 
 
@@ -148,6 +149,7 @@ def stats(B):
         return n.split("_chain")[0].split("_thin")[0]
     def merged(x):
         g = src(x); return "caltech101" if g.startswith("caltech101") else ("tcga" if g.startswith("tcga") else g)
+    ci = {}
     for gname, (kinds, gk, sf) in {"RealBench": (("real", "bench"), "gap", src), "Uni": (("real", "bench", "shift"), "ugap", src),
                                    "RealBenchM": (("real", "bench"), "gap", merged), "UniM": (("real", "bench", "shift"), "ugap", merged)}.items():
         X = [x for x in R if x["kind"] in kinds and x[gk] == x[gk] and "hub_cov" in x]
@@ -159,14 +161,16 @@ def stats(B):
                 pick = [x for gg in rng.choice(groups, len(groups)) for x in byg[gg]]
                 vals = [x[k] for x in pick]
                 if len(set(vals)) > 1: rs.append(spearmanr(vals, [x[gk] for x in pick])[0])
-            lo, hi = np.nanpercentile(rs, [2.5, 97.5]); macro(f"ci{kn}{gname}", f"$[{lo:+.2f}, {hi:+.2f}]$")
+            lo, hi = np.nanpercentile(rs, [2.5, 97.5]); macro(f"ci{kn}{gname}", f"$[{lo:+.2f}, {hi:+.2f}]$"); ci[kn + gname] = (lo, hi)
+    assert [k for k, (lo, hi) in ci.items() if lo <= 0 <= hi] == ["HubRealBenchM"], ci
     M = aw_means(B); rg = {d: max(m) - min(m) for d, m in M.items()}
     macro("awRangeTcga", f"{rg['tcga_legacy9']:.2f}"); macro("awRangeHW", f"{rg['handwritten']:.1f}")
     macro("awRangeOther", f"{max(v for d, v in rg.items() if d not in ('tcga_legacy9', 'handwritten')):.1f}")
     X = [x for x in R if x["kind"] in ("real", "bench") and x["gap"] == x["gap"]]
     lo = [x for x in X if x["hub_cov"] < 0.9]; hi = [x for x in X if x["hub_cov"] >= 0.9]
     macro("nLowHub", len(lo)); macro("nHighHub", len(hi))
-    macro("hubLowMax", f"{max(x['hub_cov'] for x in lo):.2f}"); macro("hubHighMin", f"{min(x['hub_cov'] for x in hi):.2f}")
+    macro("hubLowMax", f"{np.ceil(1000 * max(x['hub_cov'] for x in lo)) / 1000:.3f}"); macro("hubHighMin", f"{np.floor(1000 * min(x['hub_cov'] for x in hi)) / 1000:.3f}")
+    assert max(x["hub_cov"] for x in lo) < 0.8, [x["hub_cov"] for x in lo]
     macro("gapLowLo", f"{min(x['gap'] for x in lo):.1f}"); macro("gapLowHi", f"{max(x['gap'] for x in lo):.1f}")
     macro("gapHighLo", f"${min(x['gap'] for x in hi):+.1f}$"); macro("gapHighHi", f"${max(x['gap'] for x in hi):+.1f}$")
     _, SH, H = star_rows(B)
@@ -206,7 +210,7 @@ def table_benchfam(B, key="nmi"):
     S = FA.bench_settings(B, key); O = old_baselines(B, key)
     cols = [(d, t) for d in ("handwritten", "caltech101_7", "caltech101_20") for t in ("chain", "thin05")]
     rows = [("No graph alignment", [("Unaligned consensus", "PCAcat"), ("Contrastive host", "A")]),
-            ("Imputation", [("kNN imputation + $k$-means", "Kimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
+            ("Imputation", [("kNN imputation + $k$-means", "Kimp"), ("Low-rank imputation + $k$-means", "LRimp"), ("Host on imputed views", "Aimp"), ("RecFormer", "RecFormer")]),
             ("Deep IMVC", [("MVP", "MVP"), ("CPSPAN", "CPSPAN"), ("CPM-Nets", "CPM-Nets"), ("DIMVC", "DIMVC"), ("TreeEIC", "TreeEIC"),
                            ("FreeCSL", "FreeCSL"), ("DVIMC", "DVIMC"), ("GHICMC", "GHICMC")]),
             ("Alignment", [("StabMap", "StabMap"), ("Joint WP, in loop", "Cwp"), ("Host, in-loop sync.", "S"), ("Linear graph sync.", "L1"),
@@ -218,7 +222,7 @@ def table_benchfam(B, key="nmi"):
         return S[("bench", f"{d}_{t}")][0].get(v, float("nan"))
     best = {c: max(val(v, *c) for _, rs in rows for _, v in rs if val(v, *c) == val(v, *c)) for c in cols}
     L = [r"\begin{table}[!htbp]",
-         rf"\caption{{Benchmarks under cohort missingness: chain and chain with a 5\% thin edge ({key.upper()} $\times100$; ten seeds for our framework, StabMap, kNN imputation and the host on imputed views; five for the published methods, RecFormer included). Every method withholds the features of unobserved views. Bold: best per column; --: no result.}}",
+         rf"\caption{{Benchmarks under cohort missingness: chain and chain with a 5\% thin edge ({key.upper()} $\times100$; ten seeds for our framework, StabMap, kNN and low-rank imputation and the host on imputed views; five for the published methods, RecFormer included). Every method withholds the features of unobserved views. Bold: best per column; --: no result.}}",
          rf"\label{{tab:bench{key}}}", r"\centering\small", r"\begin{tabular}{ll cc cc cc}", r"\toprule",
          r" & & \multicolumn{2}{c}{HandWritten} & \multicolumn{2}{c}{Caltech101-7} & \multicolumn{2}{c}{Caltech101-20}\\",
          r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}", r"Family & Method & chain & thin & chain & thin & chain & thin\\", r"\midrule"]
@@ -239,7 +243,7 @@ def table_benchfam(B, key="nmi"):
 SHIFT_M = [("L1", "Linear graph sync."), ("ALw", "Linear-sync first assignment"), ("CLw", "Lin.-sync first assignment, in-loop sync."), ("S", "Host, in-loop sync."),
            ("B", "Host, post-hoc sync."), ("A", "Contrastive host"), ("Apl", "Host, deferred first assignment"), ("Anp", "Host, no prototypes"),
            ("Cwp", "Joint WP, in loop"), ("Cwpnp", "Joint WP, in loop, no proto."), ("A2", "Joint WP, post hoc"), ("A2np", "Joint WP, post hoc, no proto."),
-           ("Kimp", "kNN imputation + $k$-means"), ("PCAcat", "Unaligned consensus")]
+           ("Kimp", "kNN imputation + $k$-means"), ("LRimp", "Low-rank imputation + $k$-means"), ("PCAcat", "Unaligned consensus")]
 
 
 def shift_cells(B, key):
@@ -257,6 +261,7 @@ def shift_cells(B, key):
                      "A": sd_(R, "A", key), "Anp": sd_(R, "Anp", key), "Apl": sd_(R, "Apl", key), "Cwp": sd_(W, "Cwp", key), "Cwpnp": sd_(W, "Cwpnp", key),
                      "A2": {r["seed"]: r[key] for r in A2 if r.get("host") == "A"}, "A2np": {r["seed"]: r[key] for r in A2 if r.get("host") == "Anp"},
                      "Kimp": {r["seed"]: r[key] for r in K}, "B": {r["seed"]: r[key] for r in PH},
+                     "LRimp": {r["seed"]: r[key] for r in Ls_(B / f"eswa/lrimp_shift_{d}_{lv}_s*.jsonl") if r["topology"] == topo},
                      "L1": {r["seed"]: r[key] for r in LS if r["method"] == "L1"}, "PCAcat": {r["seed"]: r[key] for r in LS if r["method"] == "PCAcat"}}
                 cells.append(c)
     return [c for c in cells if all(len(c[k]) >= 10 for k, _ in SHIFT_M)]
@@ -321,7 +326,7 @@ def obs_sens(B):
             "sign_kept": sum((r["gap_obs"] > 0) == (r["gap_all"] > 0) for r in R)}
 
 
-STARM = {"S": "host, sync.", "ALw": "lin.-sync. host", "L1": "linear sync.", "Kimp": "kNN imp.", "Aimp": "host, imputed"}
+STARM = {"S": "host, sync.", "ALw": "lin.-sync. host", "L1": "linear sync.", "Kimp": "kNN imp.", "LRimp": "low-rank imp.", "Aimp": "host, imputed"}
 
 
 def star_rows(B):
@@ -380,12 +385,217 @@ def table_aw(B):
     return L
 
 
+KS = (5, 10, 20, 50)
+
+
+def kimp_by_k(B, kind, name, key="nmi"):
+    from .results import load as L_
+    out = {}
+    if kind == "real":
+        for k in KS:
+            f = B / ("bench" if k == 10 else "eswa") / (f"kimp_real_{name}.jsonl" if k == 10 else f"kimp_k{k}_real_{name}.jsonl")
+            out[k] = 100 * float(np.mean([r[key] for r in L_(f)]))
+    else:
+        d, t = name.rsplit("_", 1); tk = "chain" if t == "chain" else "chain-sweep-0.05"
+        for k in KS:
+            f = B / (f"r18_kimp_{d}.jsonl" if k == 10 else f"eswa/kimp_k{k}_bench_{d}.jsonl")
+            out[k] = 100 * float(np.mean([r[key] for r in L_(f) if r["topology"] == tk]))
+    return out
+
+
+def lrimp_by_lam(B, kind, name, key="nmi"):
+    from .results import loads as Ls_
+    if kind == "real":
+        R = Ls_(B / f"eswa/lrimp_real_{name}_s*.jsonl")
+    else:
+        d, t = name.rsplit("_", 1); tk = "chain" if t == "chain" else "chain-sweep-0.05"
+        R = [r for r in Ls_(B / f"eswa/lrimp_bench_{d}_s*.jsonl") if r["topology"] == tk]
+    fk = "nmi_by_lam" if key == "nmi" else "acc_by_lam"
+    lams = sorted(R[0][fk], key=float, reverse=True)
+    return {l: 100 * float(np.mean([r[fk][l] for r in R])) for l in lams}, 100 * float(np.mean([r[key] for r in R]))
+
+
+def tuned_rows(B):
+    out = []
+    for x in rows_all(B):
+        if x["kind"] not in ("real", "bench"):
+            continue
+        r = x["r"]; kk = kimp_by_k(B, x["kind"], x["name"]); lam, lr = lrimp_by_lam(B, x["kind"], x["name"])
+        tuned = max([max(kk.values()), max(lam.values())] + [r[v] for v in ("Aimp", "RecFormer") if r.get(v, float("nan")) == r.get(v, float("nan"))])
+        fixed = r["L1"] - max(r["Kimp"], r["LRimp"])
+        out.append(dict(x, kk=kk, lam=lam, lr=lr, tuned=tuned, gap_tuned=x["ba"][0] - tuned, fixed=fixed))
+    return out
+
+
+def table_tuned(B):
+    order = {g: i for i, (g, _) in enumerate(REAL)}; names = dict(REAL)
+    R = tuned_rows(B); R = sorted([x for x in R if x["kind"] == "real"], key=lambda x: order[x["name"]]) + [x for x in R if x["kind"] == "bench"]
+    L = [r"\begin{table}[!htbp]",
+         r"\caption{Strength of the imputation family (NMI $\times100$, ten seeds). kNN imputation with $k$ neighbours ($k=10$ in all other tables); low-rank imputation with the regularisation chosen without labels (label-free) and the best point of its regularisation path chosen with labels (best $\lambda$); best alignment as in Table~\ref{tab:gap}. Gap: best alignment minus best imputation, with the imputation candidates of Table~\ref{tab:gap} and low-rank imputation (label-free), or with kNN and low-rank imputation at their label-chosen settings and the host on imputed views and RecFormer in their fixed configurations (tuned). Fixed: linear graph synchronisation minus the better of label-free kNN and low-rank imputation, the better of the two taken per setting.}",
+         r"\label{tab:tuned}", r"\centering\footnotesize\setlength{\tabcolsep}{2.5pt}", r"\begin{tabular}{l cccc cc c rrr}", r"\toprule",
+         r" & \multicolumn{4}{c}{kNN imputation, $k=$} & \multicolumn{2}{c}{low-rank imputation} & & \multicolumn{3}{c}{gap}\\",
+         r"\cmidrule(lr){2-5}\cmidrule(lr){6-7}\cmidrule(lr){9-11}",
+         r"Setting & 5 & 10 & 20 & 50 & label-free & best $\lambda$ & alignment & label-free & tuned & fixed\\", r"\midrule"]
+    for x in R:
+        if x["kind"] == "real":
+            nm = names[x["name"]]
+        else:
+            d, t = x["name"].rsplit("_", 1); nm = DSN[d] + (" chain" if t == "chain" else " thin")
+        L.append(nm + " & " + " & ".join(f"{x['kk'][k]:.1f}" for k in KS) + f" & {x['lr']:.1f} & {max(x['lam'].values()):.1f} & {x['ba'][0]:.1f} & {x['gap']:+.1f} & {x['gap_tuned']:+.1f} & {x['fixed']:+.1f}" + r"\\")
+        if x["kind"] == "real" and x["name"] == REAL[-1][0]:
+            L.append(r"\midrule")
+    L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    return wrap(L)
+
+
+def stats_eswa(B):
+    out = []
+    def macro(name, val): out.append(rf"\newcommand{{\{name}}}{{{val}}}")
+    R = tuned_rows(B); lo = [x for x in R if x["hub_cov"] < 0.9]; hi = [x for x in R if x["hub_cov"] >= 0.9]
+    macro("kRangeMax", f"{max(max(x['kk'].values()) - min(x['kk'].values()) for x in R):.1f}")
+    macro("tunedLowLo", f"{min(x['gap_tuned'] for x in lo):.1f}"); macro("tunedLowHi", f"{max(x['gap_tuned'] for x in lo):.1f}")
+    macro("tunedHighLo", f"${min(x['gap_tuned'] for x in hi):+.1f}$"); macro("tunedHighHi", f"${max(x['gap_tuned'] for x in hi):+.1f}$")
+    macro("fixedLowLo", f"${min(x['fixed'] for x in lo):+.1f}$"); macro("fixedLowHi", f"${max(x['fixed'] for x in lo):+.1f}$")
+    macro("fixedHighLo", f"${min(x['fixed'] for x in hi):+.1f}$"); macro("fixedHighHi", f"${max(x['fixed'] for x in hi):+.1f}$")
+    macro("nLowTunedPos", sum(x["gap_tuned"] > 0 for x in lo)); macro("nLowFixedPos", sum(x["fixed"] > 0 for x in lo))
+    macro("lrLamGainMax", f"{max(max(x['lam'].values()) - x['lr'] for x in R):.1f}")
+    macro("gapHighAbs", f"{max(abs(x['gap']) for x in hi):.1f}")
+    from .results import load as L_
+    ER = L_(B / "eswa/edge_resid.jsonl")
+    med = {k: [float(np.median([r[k] for r in ER if r["data"] == g and r["topology"] == "natural"])) for g, _ in REAL] for k in ("res", "res_perm", "res_ls")}
+    for k, kn in (("res", "Proc"), ("res_perm", "Perm"), ("res_ls", "Lin")):
+        macro(f"resid{kn}Lo", f"{min(med[k]):.2f}"); macro(f"resid{kn}Hi", f"{max(med[k]):.2f}")
+    _, res = table_regret(B)
+    mx = sorted((t[5], t[1], t[2]) for t in res if t[5] == t[5])
+    assert mx[0][2] == "L1", mx[:3]
+    macro("lOneMax", f"{mx[0][0]:.1f}"); macro("nextMax", f"{mx[1][0]:.1f}"); macro("nextName", mx[1][1].replace("$k$", "$k$"))
+    macro("thirdMax", f"{mx[2][0]:.1f}"); macro("nOverTen", sum(t[0] > 10 for t in mx[1:])); macro("nMethodsReal", len(mx))
+    assert mx[1][2] == "LRimp" and all(t[0] > 10 for t in mx[2:]), mx[:3]
+    _, res_a = table_regret(B, "acc")
+    ma = sorted((t[5], t[1], t[2]) for t in res_a if t[5] == t[5])
+    assert [t[2] for t in ma[:3]] == ["LRimp", "L1", "ALw"] and all(t[0] > 10 for t in ma[3:]), ma[:4]
+    assert max(mx[1][0], ma[1][0]) < 8, (mx[:2], ma[:2])
+    macro("accLrMax", f"{ma[0][0]:.1f}"); macro("accLinMax", f"{ma[1][0]:.1f}"); macro("accThirdMax", f"{ma[2][0]:.1f}")
+    Sa = FA.real_settings(B, "acc"); Va = {g: Sa[("real", g)][0] for g, _ in REAL}
+    sfa = {n: max(v for v in Va[g].values() if v == v) - Va[g]["L1"] for g, n in REAL}
+    macro("accLinWhere", max(sfa, key=sfa.get).replace(" ", "~"))
+    SRC = json.load(open(B / "eswa/c007_summary.json"))
+    for g, t in (("cortex_stage2", "Six"), ("cortex_stage2_no3c", "Five")):
+        for k, kn in (("patchseq", "Patch"), ("methylome", "Meth"), ("all", "All")):
+            macro(f"srcGap{kn}{t}", f"{SRC[g]['gap'][k]['gap']:.1f}")
+    for x in R:
+        if x["name"] in ("cortex_stage2", "cortex_stage2_no3c"):
+            t = "Six" if x["name"] == "cortex_stage2" else "Five"
+            macro(f"lrCortex{t}", f"{x['lr']:.1f}"); macro(f"gapCortex{t}", f"{x['gap']:.1f}")
+    RB = [x for x in rows_all(B) if x["kind"] == "bench"]
+    macro("gapBenchLo", f"{min(x['gap'] for x in RB):.1f}"); macro("gapBenchHi", f"{max(x['gap'] for x in RB):.1f}")
+    macro("nBenchLinLeads", sum(x["r"]["L1"] > x["bi"][0] for x in RB)); macro("nBench", len(RB))
+    hwt = [x for x in RB if x["name"] == "handwritten_thin05"][0]
+    macro("gapHWthin", f"{hwt['gap']:.1f}"); macro("gapHWthinNoWP", f"{max(hwt['r'][k] for k in FA.ALIGN if k != 'Cwp' and hwt['r'].get(k, float('nan')) == hwt['r'].get(k, float('nan'))) - hwt['bi'][0]:.1f}")
+    lo_all = [x for x in rows_all(B) if x["kind"] in ("real", "bench") and x["hub_cov"] < 0.9]
+    macro("nLowPos", sum(x["gap"] > 0 for x in lo_all))
+    _, SH, _ = star_rows(B)
+    for r in SH:
+        t = {"HandWritten": "HW", "Caltech101-7": "CalSeven", "Caltech101-20": "CalTwenty"}[r["dataset"]]
+        macro(f"starChain{t}", f"{r['chain']['gap']:.1f}"); macro(f"starChg{t}", f"{r['gap_drop']:.1f}"); macro(f"starP{t}", f"{r['p']:.3f}")
+        macro(f"starHubGap{t}", f"${r['star']['gap']:+.1f}$")
+    S_ = FA.real_settings(B); V = {g: S_[("real", g)][0] for g, _ in REAL}
+    sf = {n: max(v for v in V[g].values() if v == v) - V[g]["LRimp"] for g, n in REAL}
+    macro("lrMaxWhere", max(sf, key=sf.get).replace(" ", "~"))
+    if not (B / "eswa/time.jsonl").exists():
+        return out
+    T = [r for r in L_(B / "eswa/time.jsonl") if r["exit"] == 0]
+    def rng_(ms, tag):
+        v = [r["seconds"] for r in T if r["method"] in ms]
+        fmt = lambda x: f"{x:.0f}" if x >= 10 else f"{x:.1f}"
+        if not v:
+            macro(f"time{tag}Lo", "??"); macro(f"time{tag}Hi", "??"); return
+        macro(f"time{tag}Lo", fmt(min(v))); macro(f"time{tag}Hi", fmt(max(v)))
+    for ms, tag in ((("L1",), "Lin"), (("Diag",), "Diag"), (("Kimp",), "Knn"), (("LRimp",), "Lr"), (("StabMap",), "Stab"),
+                    (("A", "C", "ALw", "Aimp"), "Host"), (("RecFormer", "FreeCSL", "DVIMC", "GHICMC"), "Deep"), (("Cwp",), "Wp")):
+        rng_(ms, tag)
+    macro("gpuLinMax", f"{max((r['peak_gpu_gb'] for r in T if r['method'] == 'L1'), default=float('nan')):.1f}")
+    assert all(r["peak_gpu_gb"] == 0 for r in T if r["method"] in ("Diag", "L1", "Kimp", "StabMap"))
+    return out
+
+
+def table_time(B):
+    from .results import load as L_
+    T = {(r["method"], r["setting"]): r for r in L_(B / "eswa/time.jsonl")}
+    cols = [g for g, _ in REAL]
+    L = [r"\begin{table}[!htbp]",
+         r"\caption{Cost of one run (seed 0) on one A100 GPU with 8 CPU threads, one job at a time: wall-clock seconds of the whole run (loading, preprocessing, fitting and clustering) on every real setting, and the largest peak host memory (RSS) and GPU memory over the settings. Joint WP ran single-threaded, as in its main runs; --: not run; OOM: out of memory.}",
+         r"\label{tab:time}", r"\centering\footnotesize\setlength{\tabcolsep}{2.5pt}", r"\begin{tabular}{l " + "r" * len(cols) + " rr}", r"\toprule",
+         r" & \multicolumn{" + str(len(cols)) + r"}{c}{seconds} & \multicolumn{2}{c}{peak GB}\\", r"\cmidrule(lr){2-" + str(1 + len(cols)) + r"}\cmidrule(lr){" + str(2 + len(cols)) + "-" + str(3 + len(cols)) + "}",
+         "Method & " + " & ".join(n for _, n in REAL) + r" & host & GPU\\", r"\midrule"]
+    for fam, rows in [("Label-free diagnostics", [("Graph, hub coverage, imputability", "Diag")])] + ROWS:
+        L.append(r"\multicolumn{" + str(3 + len(cols)) + r"}{l}{\textit{" + fam + "}}" + r"\\")
+        for name, v in rows:
+            cells = []; rss = []; gpu = []
+            for g in cols:
+                r = T.get((v if v != "S" else "C", g))
+                if (v, g) in OOM: cells.append("OOM"); continue
+                if r is None or r["exit"] != 0: cells.append("--"); continue
+                cells.append(f"{r['seconds']:.0f}" if r["seconds"] >= 10 else f"{r['seconds']:.1f}"); rss.append(r["peak_rss_gb"]); gpu.append(r["peak_gpu_gb"])
+            L.append(r"\hspace{0.6em}" + name + " & " + " & ".join(cells) + (f" & {max(rss):.1f} & {max(gpu):.1f}" if rss else " & -- & --") + r"\\")
+        L.append(r"\midrule")
+    L[-1] = r"\bottomrule"
+    L += [r"\end{tabular}", r"\end{table}"]
+    return wrap(L)
+
+
+def table_resid(B):
+    from .results import load as L_
+    R = L_(B / "eswa/edge_resid.jsonl"); names = dict(REAL)
+    rows = [(n, [r for r in R if r["data"] == g and r["topology"] == "natural"]) for g, n in REAL]
+    for d, dn in DSN.items():
+        for t, tn in (("chain", "chain"), ("thin05", "thin")):
+            rows.append((f"{dn} {tn}", [r for r in R if r["data"] == d and r["topology"] == t]))
+    L = [r"\begin{table}[!htbp]",
+         r"\caption{How close the edges are to an orthogonal relation: relative residual $\|Z_u\hat R_{uv}-Z_v\|/\|Z_v\|$ of the Procrustes fit of every edge with at least $d=32$ co-observed instances, for the per-view embeddings of linear graph synchronisation (median and range over edges; benchmarks: edges of ten masks). Permuted: the same fit after the co-observed rows of one view are permuted, so that no correspondence remains. Linear: an unconstrained least-squares map, which bounds what any linear relation reaches.}",
+         r"\label{tab:resid}", r"\centering\footnotesize\setlength{\tabcolsep}{3pt}", r"\begin{tabular}{l c ccc}", r"\toprule",
+         r"Setting & edges & Procrustes & permuted & linear\\", r"\midrule"]
+    for nm, rr in rows:
+        if not rr: continue
+        q = lambda k: (np.median([r[k] for r in rr]), min(r[k] for r in rr), max(r[k] for r in rr))
+        a, b, c = q("res"), q("res_perm"), q("res_ls")
+        ne = len({(r["u"], r["v"]) for r in rr})
+        L.append(f"{nm} & {ne} & {a[0]:.2f} [{a[1]:.2f}, {a[2]:.2f}] & {b[0]:.2f} & {c[0]:.2f}" + r"\\")
+    L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    return L
+
+
+def table_source(B):
+    S = json.load(open(B / "eswa/c007_summary.json"))
+    gs = [("cortex_stage2_no3c", "Cortex 5"), ("cortex_stage2", "Cortex 6")]; subs = [("all", "all"), ("patchseq", "Patch-seq"), ("methylome", "methylome")]
+    L = [r"\begin{table}[!htbp]",
+         r"\caption{The cortex graphs scored by source (NMI $\times100$; every method clusters all 2\,697 neurons, rerun with saved labels: ten seeds, five for the published deep methods). All: every neuron; Patch-seq: the 709 Patch-seq neurons, whose labels come from a transcriptomic taxonomy; methylome: the 1\,988 snmCAT and snm3C nuclei, whose labels are methylome clusters. The rerun reproduces Table~\ref{tab:realnmi} on all neurons except for the host on imputed views, whose main run used another GPU. Bottom: best alignment minus best imputation within each subset.}",
+         r"\label{tab:source}", r"\centering\footnotesize\setlength{\tabcolsep}{3pt}", r"\begin{tabular}{l ccc ccc}", r"\toprule",
+         r" & \multicolumn{3}{c}{Cortex 5} & \multicolumn{3}{c}{Cortex 6}\\", r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}",
+         "Method & " + " & ".join(n for _, n in subs) + " & " + " & ".join(n for _, n in subs) + r"\\", r"\midrule"]
+    for fam, rows in ROWS:
+        L.append(r"\multicolumn{7}{l}{\textit{" + fam + "}}" + r"\\")
+        for name, v in rows:
+            key = "C" if v == "S" else v
+            cells = []
+            for g, _ in gs:
+                m = S[g]["methods"].get(key)
+                cells += ["--"] * 3 if m is None else [f"{m[k]['nmi']:.1f}" for k, _ in subs]
+            L.append(r"\hspace{0.6em}" + name + " & " + " & ".join(cells) + r"\\")
+        L.append(r"\midrule")
+    L.append(r"\textit{gap} & " + " & ".join(f"${S[g]['gap'][k]['gap']:+.1f}$" for g, _ in gs for k, _ in subs) + r"\\")
+    L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    return wrap(L)
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--build", type=Path, required=True); ap.add_argument("--sections", type=Path, required=True)
     a = ap.parse_args()
     for fn, L in (("table_real_nmi.tex", table_real(a.build, "nmi")), ("table_real_acc.tex", table_real(a.build, "acc")),
                   ("table_gap.tex", table_gap(a.build)), ("table_benchfam.tex", table_benchfam(a.build)), ("table_benchfam_acc.tex", table_benchfam(a.build, "acc")),
-                  ("table_regret.tex", table_regret(a.build)[0]), ("table_grid1.tex", table_grid(a.build, ["complete", "random-2", "star", "ring"], "tab:grid", "1")), ("table_grid2.tex", table_grid(a.build, ["chain", "two-comp", "thin05"], "tab:grid2", "2")), ("table_shift.tex", table_shift(a.build)), ("stats.tex", stats(a.build)), ("table_aw.tex", table_aw(a.build)), ("table_star.tex", table_star(a.build))):
+                  ("table_regret.tex", table_regret(a.build)[0]), ("table_grid1.tex", table_grid(a.build, ["complete", "random-2", "star", "ring"], "tab:grid", "1")), ("table_grid2.tex", table_grid(a.build, ["chain", "two-comp", "thin05"], "tab:grid2", "2")), ("table_shift.tex", table_shift(a.build)), ("stats.tex", stats(a.build)), ("table_aw.tex", table_aw(a.build)), ("table_star.tex", table_star(a.build)),
+                  ("table_tuned.tex", table_tuned(a.build)), ("stats_eswa.tex", stats_eswa(a.build)), ("table_time.tex", table_time(a.build)),
+                  ("table_resid.tex", table_resid(a.build)), ("table_source.tex", table_source(a.build))):
         (a.sections / fn).write_text("\n".join(L) + "\n"); print("wrote", fn)
 
 
