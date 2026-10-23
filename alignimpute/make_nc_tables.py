@@ -345,7 +345,7 @@ def star_rows(B):
 def table_star(B):
     rows, _, _ = star_rows(B)
     L = [r"\begin{table}[!htbp]",
-         r"\caption{Controlled topology on the same benchmarks (NMI $\times100$, ten seeds, one GPU): every instance observes two views, arranged as a chain or as a star whose hub view is observed on every instance. The hub is view 1 of the files or the view that best predicts the other views (label-free, \ref{app:baselines}). Alignment and imputation: the best method of each family. Host, sync.: host with in-loop synchronisation; lin.-sync. host: host with a linear-sync first assignment; kNN imp.: kNN imputation; host, imputed: host on imputed views. Gap: best alignment minus best imputation; change: gap of the chain minus gap of the star, paired over seeds (Wilcoxon $p$).}",
+         r"\caption{Controlled topology on the same benchmarks (NMI $\times100$, ten seeds, one GPU): every instance observes two views, arranged as a chain or as a star whose hub view is observed on every instance. The hub is view 1 of the files or the view that best predicts the other views (label-free, \ref{app:protocol}). Alignment and imputation: the best method of each family. Host, sync.: host with in-loop synchronisation; lin.-sync. host: host with a linear-sync first assignment; kNN imp.: kNN imputation; host, imputed: host on imputed views. Gap: best alignment minus best imputation; change: gap of the chain minus gap of the star, paired over seeds (Wilcoxon $p$).}",
          r"\label{tab:star}", r"\centering\footnotesize\setlength{\tabcolsep}{2pt}", r"\begin{tabular}{l l l c l c r r}", r"\toprule",
          r"Dataset & Topology & alignment & & imputation & & gap & change ($p$)\\", r"\midrule"]
     last = None
@@ -569,7 +569,7 @@ def table_source(B):
     S = json.load(open(B / "eswa/c007_summary.json"))
     gs = [("cortex_stage2_no3c", "Cortex 5"), ("cortex_stage2", "Cortex 6")]; subs = [("all", "all"), ("patchseq", "Patch-seq"), ("methylome", "methylome")]
     L = [r"\begin{table}[!htbp]",
-         r"\caption{The cortex graphs scored by source (NMI $\times100$; every method clusters all 2\,697 neurons, rerun with saved labels: ten seeds, five for the published deep methods). All: every neuron; Patch-seq: the 709 Patch-seq neurons, whose labels come from a transcriptomic taxonomy; methylome: the 1\,988 snmCAT and snm3C nuclei, whose labels are methylome clusters. The rerun reproduces Table~\ref{tab:realnmi} on all neurons except for the host on imputed views, whose main run used another GPU. Bottom: best alignment minus best imputation within each subset.}",
+         r"\caption{The cortex graphs scored by source (NMI $\times100$; every method clusters all 2\,697 neurons, rerun with saved labels: ten seeds, five for the published deep methods). All: every neuron; Patch-seq: the 709 Patch-seq neurons, whose labels come from a transcriptomic taxonomy; methylome: the 1\,988 snmCAT and snm3C nuclei, whose labels are methylome clusters. The rerun reproduces Table~\ref*{M-tab:realnmi} of the main paper on all neurons except for the host on imputed views, whose main run used another GPU. Bottom: best alignment minus best imputation within each subset.}",
          r"\label{tab:source}", r"\centering\footnotesize\setlength{\tabcolsep}{3pt}", r"\begin{tabular}{l ccc ccc}", r"\toprule",
          r" & \multicolumn{3}{c}{Cortex 5} & \multicolumn{3}{c}{Cortex 6}\\", r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}",
          "Method & " + " & ".join(n for _, n in subs) + " & " + " & ".join(n for _, n in subs) + r"\\", r"\midrule"]
